@@ -70,31 +70,9 @@
             box-shadow: 0 8px 32px rgba(102, 126, 234, 0.3);
         }
 
-        .nav-button::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-            transition: left 0.5s;
-        }
-
         .nav-button:hover:not(:disabled) {
             transform: translateY(-4px) scale(1.05);
             box-shadow: 0 16px 48px rgba(102, 126, 234, 0.4);
-        }
-
-        .nav-button:hover:not(:disabled)::before {
-            left: 100%;
-        }
-
-        .nav-button:disabled {
-            background: linear-gradient(135deg, #9ca3af, #6b7280);
-            cursor: not-allowed;
-            transform: none;
-            box-shadow: none;
         }
 
         .info-box {
@@ -105,59 +83,12 @@
             border: 1px solid rgba(59, 130, 246, 0.2);
         }
 
-        .warning-box {
-            background: linear-gradient(135deg, rgba(245, 158, 11, 0.1) 0%, rgba(251, 191, 36, 0.1) 100%);
-            border-left: 4px solid #f59e0b;
-            border-radius: 16px;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(245, 158, 11, 0.2);
-        }
-
-        .success-box {
-            background: linear-gradient(135deg, rgba(34, 197, 94, 0.1) 0%, rgba(74, 222, 128, 0.1) 100%);
-            border-left: 4px solid #22c55e;
-            border-radius: 16px;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(34, 197, 94, 0.2);
-        }
-
-        .step-number {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            width: 3rem;
-            height: 3rem;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 700;
-            font-size: 1.125rem;
-            box-shadow: 0 8px 24px rgba(102, 126, 234, 0.3);
-            position: relative;
-        }
-
-        .step-number::before {
-            content: '';
-            position: absolute;
-            inset: -2px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            z-index: -1;
-            opacity: 0.5;
-        }
-
         .sidebar {
             background: rgba(255, 255, 255, 0.95);
             border-radius: 20px;
             backdrop-filter: blur(20px);
             border: 1px solid rgba(255, 255, 255, 0.3);
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-        }
-
-        .nav-item {
-            transition: all 0.3s ease;
-            border-radius: 12px;
-            margin: 0.5rem 0;
         }
 
         .nav-item:hover {
@@ -181,25 +112,11 @@
             transition: all 0.3s ease;
         }
 
-        .content-section:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 16px 48px rgba(0, 0, 0, 0.1);
-        }
-
         .gradient-text {
             background: linear-gradient(135deg, #667eea, #764ba2);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-        }
-
-        .floating-card {
-            animation: float-card 6s ease-in-out infinite;
-        }
-
-        @keyframes float-card {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
         }
 
         .slide-in {
@@ -216,25 +133,6 @@
                 transform: translateY(0);
             }
         }
-
-        .hover-lift {
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .hover-lift:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 16px 48px rgba(0, 0, 0, 0.15);
-        }
-
-        .glow-effect {
-            box-shadow: 0 0 20px rgba(102, 126, 234, 0.3);
-        }
-
-        .glow-effect:hover {
-            box-shadow: 0 0 40px rgba(102, 126, 234, 0.5);
-        }
-
-
 
         .pdf-link {
             background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
@@ -254,26 +152,10 @@
             box-shadow: 0 8px 24px rgba(239, 68, 68, 0.3);
         }
 
-        /* Mejoras de tipografía para el contenido */
         .content-text {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
             line-height: 1.8;
             color: #374151;
-        }
-
-        .content-text h1, .content-text h2, .content-text h3, .content-text h4 {
-            font-weight: 600;
-            color: #1f2937;
-            margin-bottom: 1rem;
-        }
-
-        .content-text p {
-            margin-bottom: 1.5rem;
-            text-align: justify;
-        }
-
-        .content-text p:last-child {
-            margin-bottom: 0;
         }
 
         .definition-card {
@@ -282,26 +164,13 @@
             transition: all 0.3s ease;
         }
 
-        .definition-card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.1);
-            border-color: #cbd5e1;
-        }
-
         .content-card-enhanced {
             background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
             border: 1px solid #e5e7eb;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
             transition: all 0.3s ease;
         }
 
-        .content-card-enhanced:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-            border-color: #d1d5db;
-        }
-
-        /* Estilos para navegación horizontal */
         .nav-tab {
             background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
             border: 1px solid #e2e8f0;
@@ -316,62 +185,27 @@
             display: flex;
             align-items: center;
             gap: 0.5rem;
-            min-width: 0;
-            flex-shrink: 0;
-        }
-
-        .nav-tab:hover {
-            background: linear-gradient(135deg, #e2e8f0 0%, #cbd5e1 100%);
-            border-color: #cbd5e1;
-            color: #475569;
-            transform: translateY(-1px);
         }
 
         .nav-tab.active {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             border-color: #667eea;
             color: white;
-            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
-        }
-
-        .nav-tab.active:hover {
-            background: linear-gradient(135deg, #5a67d8 0%, #6b46c1 100%);
-            transform: translateY(-1px);
-        }
-
-        .nav-tab i {
-            font-size: 0.875rem;
-        }
-
-        /* Scroll horizontal suave */
-        .overflow-x-auto {
-            scrollbar-width: thin;
-            scrollbar-color: #cbd5e1 #f1f5f9;
         }
 
         .overflow-x-auto::-webkit-scrollbar {
             height: 6px;
         }
 
-        .overflow-x-auto::-webkit-scrollbar-track {
-            background: #f1f5f9;
-            border-radius: 3px;
-        }
-
         .overflow-x-auto::-webkit-scrollbar-thumb {
             background: #cbd5e1;
             border-radius: 3px;
-        }
-
-        .overflow-x-auto::-webkit-scrollbar-thumb:hover {
-            background: #94a3b8;
         }
     </style>
 </head>
 <body class="p-4 sm:p-8">
     <div class="container mx-auto">
         <div class="content-card overflow-hidden">
-            <!-- Header -->
             <header class="p-8 sm:p-12 border-b border-gray-200">
                 <div class="flex flex-col lg:flex-row justify-between items-start lg:items-center space-y-6 lg:space-y-0">
                     <div>
@@ -391,9 +225,7 @@
                 </div>
             </header>
 
-            <!-- Main Content -->
             <div class="w-full">
-                <!-- Horizontal Navigation Tabs -->
                 <div class="bg-white border-b border-gray-200">
                     <div class="px-6 lg:px-8">
                         <div class="flex items-center justify-between mb-4">
@@ -412,60 +244,42 @@
                         </div>
                         <div class="overflow-x-auto">
                             <nav id="horizontal-nav" class="flex space-x-1 pb-2">
-                                <!-- Navigation tabs will be generated by JavaScript -->
-                            </nav>
+                                </nav>
                         </div>
                     </div>
                 </div>
 
-                <!-- Main Content Area -->
                 <main class="p-6 lg:p-8">
                     <div id="content-area" class="space-y-8">
-                        <!-- Content sections will be loaded here -->
-                    </div>
+                        </div>
                 </main>
             </div>
         </div>
     </div>
 
-    <!-- Footer compacto con información de contacto -->
     <footer class="h-11 bg-gradient-to-r from-blue-900 to-purple-900 text-white flex items-center justify-center">
         <div class="container mx-auto px-4">
             <div class="flex items-center justify-between text-sm">
-                <!-- Información principal -->
                 <div class="flex items-center space-x-6">
                     <span class="flex items-center">
                         <i class="fas fa-info-circle mr-2 text-blue-300"></i>
                         Para más información:
                     </span>
-                    <a href="https://intranet.hosmet.cl" target="_blank" 
-                       class="text-blue-300 hover:text-white transition-colors duration-300 font-medium">
+                    <a href="https://intranet.hosmet.cl" target="_blank" class="text-blue-300 hover:text-white transition-colors">
                         intranet.hosmet.cl
                     </a>
                 </div>
-
-                <!-- Separador -->
                 <div class="w-px h-6 bg-white/30"></div>
-
-                <!-- Departamento -->
                 <span class="flex items-center">
                     <i class="fas fa-building mr-2 text-blue-300"></i>
-                    Departamento de Informática
+                    Unidad de Gestión de la Información
                 </span>
-
-                <!-- Separador -->
                 <div class="w-px h-6 bg-white/30"></div>
-
-                <!-- Anexo -->
                 <span class="flex items-center">
                     <i class="fas fa-phone mr-2 text-green-300"></i>
                     Anexo: <span class="font-bold ml-1">xxxxxx</span>
                 </span>
-
-                <!-- Separador -->
                 <div class="w-px h-6 bg-white/30"></div>
-
-                <!-- Soporte 24/7 -->
                 <span class="flex items-center">
                     <i class="fas fa-clock mr-2 text-yellow-300"></i>
                     <span class="font-bold">24/7</span> Soporte
@@ -475,14 +289,9 @@
     </footer>
 
     <script>
-        // Contenido del protocolo de gestión de accesos a TrakCare - EMBEBIDO
         let protocolContent = {};
 
-        // Función para cargar el contenido embebido
         function loadProtocolContent() {
-            console.log('🔄 Iniciando carga de contenido embebido...');
-            
-            // Contenido del protocolo embebido directamente
             const embeddedContent = {
                 "seccion-1": {
                     title: "Introducción y Propósito",
@@ -504,11 +313,11 @@
                     icon: "fas fa-book",
                     content: formatContent(`TrakCare: Sistema de Registro Clínico Electrónico utilizado en el HDS.
 
-MDS (Mesa de Servicio): Unidad responsable de la gestión operativa de las cuentas TrakCare.
+Unidad de Gestión de la Información: Unidad responsable de la gestión operativa de las cuentas TrakCare.
 
 SSMO: Servicio de Salud Metropolitano Oriente.
 
-OSticket: Sistema de gestión de tickets de la MDS.
+OSticket: Sistema de gestión de tickets de la Unidad de Gestión de la Información.
 
 Cuenta Activa: Cuenta de usuario habilitada para acceder a TrakCare.
 
@@ -542,7 +351,7 @@ Acceso condicionado a habilitación previa: Se requiere la Constancia de Habilit
 
 Justificación funcional: Todo permiso debe estar respaldado por una necesidad operativa explícita.
 
-Control y trazabilidad: Todas las acciones deben quedar registradas formalmente a través de la Mesa de Servicio.
+Control y trazabilidad: Todas las acciones deben quedar registradas formalmente a través de la Unidad de Gestión de la Información.
 
 Temporalidad y revisión periódica: Los accesos se mantendrán vigentes solo mientras exista un vínculo activo.
 
@@ -553,28 +362,28 @@ Seguridad de la información: Todo acceso debe cumplir con los lineamientos de c
                     icon: "fas fa-users",
                     content: formatContent(`Colaborador Solicitante: Debe haber completado su proceso de habilitación, cumplir con las políticas de seguridad y notificar a su jefatura sobre cambios de rol.
 
-Jefatura / Supervisor: Debe validar la necesidad de acceso, firmar los formularios de solicitud, y notificar a RRHH/URAD y a la MDS sobre desvinculaciones o cambios de personal.
+Jefatura / Supervisor: Debe validar la necesidad de acceso, firmar los formularios de solicitud, y notificar a RRHH/URAD y a la Unidad de Gestión de la Información sobre desvinculaciones o cambios de personal.
 
-RRHH / URAD: Deben ejecutar el Protocolo de Habilitación Institucional, emitir la Constancia de Habilitación y notificar a la MDS sobre las vinculaciones y desvinculaciones.
+RRHH / URAD: Deben ejecutar el Protocolo de Habilitación Institucional, emitir la Constancia de Habilitación y notificar a la Unidad de Gestión de la Información sobre las vinculaciones y desvinculaciones.
 
-Agente de Mesa de Servicio (MDS): Es responsable de recepcionar y validar las solicitudes, crear, activar, inactivar y modificar perfiles, notificar al usuario y al SSMO, y gestionar reseteo de contraseñas.
+Unidad de Gestión de la Información: Es responsable de recepcionar y validar las solicitudes, crear, activar, inactivar y modificar perfiles, notificar al usuario y al SSMO, y gestionar reseteo de contraseñas.
 
 Departamento de Transformación Digital: Supervisa el cumplimiento del protocolo, define los perfiles de acceso y realiza auditorías de seguridad.`)
                 },
                 "seccion-8": {
                     title: "Procedimiento de Solicitud y Creación de Cuentas Nuevas",
                     icon: "fas fa-clipboard-list",
-                    content: formatContent(`Este procedimiento se aplica a colaboradores debidamente habilitados. Requiere que el colaborador cuente con su "Constancia de Habilitación Institucional" y haya completado la capacitación. La solicitud debe enviarse a soporte@hosmet.cl con la constancia y el formulario de solicitud completo y firmado. La MDS se encarga de verificar la documentación, crear el usuario en TrakCare, registrar la solicitud, notificar al SSMO y coordinar la entrega de credenciales.`)
+                    content: formatContent(`Este procedimiento se aplica a colaboradores debidamente habilitados. Requiere que el colaborador cuente con su "Constancia de Habilitación Institucional" y haya completado la capacitación. La solicitud debe enviarse a soporte@hosmet.cl con la constancia y el formulario de solicitud completo y firmado. La Unidad de Gestión de la Información se encarga de verificar la documentación, crear el usuario en TrakCare, registrar la solicitud, notificar al SSMO y coordinar la entrega de credenciales.`)
                 },
                 "seccion-9": {
                     title: "Procedimiento de Activación de Cuentas Existentes",
                     icon: "fas fa-user-plus",
-                    content: formatContent(`Aplica cuando un colaborador con una cuenta inactivada retoma funciones. Se requiere una solicitud formal desde la jefatura a soporte@hosmet.cl indicando que el vínculo laboral está vigente. La MDS verifica la cuenta, la activa en TrakCare, registra la activación y notifica al SSMO y al usuario.`)
+                    content: formatContent(`Aplica cuando un colaborador con una cuenta inactivada retoma funciones. Se requiere una solicitud formal desde la jefatura a soporte@hosmet.cl indicando que el vínculo laboral está vigente. La Unidad de Gestión de la Información verifica la cuenta, la activa en TrakCare, registra la activación y notifica al SSMO y al usuario.`)
                 },
                 "seccion-10": {
                     title: "Procedimiento de Inactivación de Cuentas",
                     icon: "fas fa-user-times",
-                    content: formatContent(`Es una medida de seguridad que se puede ejecutar por inactividad técnica o por solicitud formal asociada al término de funciones. Todas las inactivaciones son gestionadas por la Mesa de Servicio para garantizar la seguridad y optimizar el uso de licencias.`)
+                    content: formatContent(`Es una medida de seguridad que se puede ejecutar por inactividad técnica o por solicitud formal asociada al término de funciones. Todas las inactivaciones son gestionadas por la Unidad de Gestión de la Información para garantizar la seguridad y optimizar el uso de licencias.`)
                 },
                 "seccion-11": {
                     title: "Procedimiento de Modificación de Permisos",
@@ -584,7 +393,7 @@ Departamento de Transformación Digital: Supervisa el cumplimiento del protocolo
                 "seccion-12": {
                     title: "Gestión de Contraseñas",
                     icon: "fas fa-key",
-                    content: formatContent(`Las contraseñas iniciales son temporales y se entregan de forma segura. El usuario debe cambiarlas en el primer inicio de sesión. Se promueve el uso de contraseñas seguras y se fuerza el cambio periódico. El sistema puede bloquear las cuentas por intentos fallidos, y el reseteo lo gestiona la MDS.`)
+                    content: formatContent(`Las contraseñas iniciales son temporales y se entregan de forma segura. El usuario debe cambiarlas en el primer inicio de sesión. Se promueve el uso de contraseñas seguras y se fuerza el cambio periódico. El sistema puede bloquear las cuentas por intentos fallidos, y el reseteo lo gestiona la Unidad de Gestión de la Información.`)
                 },
                 "seccion-13": {
                     title: "Capacitación Específica en TrakCare",
@@ -594,7 +403,7 @@ Departamento de Transformación Digital: Supervisa el cumplimiento del protocolo
                 "seccion-14": {
                     title: "Auditoría y Control",
                     icon: "fas fa-chart-line",
-                    content: formatContent(`Las jefaturas deben revisar semestralmente los accesos activos del personal a su cargo. La Mesa de Servicio realiza controles mensuales para detectar inactividad y garantizar el cierre oportuno de accesos.`)
+                    content: formatContent(`Las jefaturas deben revisar semestralmente los accesos activos del personal a su cargo. La Unidad de Gestión de la Información realiza controles mensuales para detectar inactividad y garantizar el cierre oportuno de accesos.`)
                 },
                 "seccion-15": {
                     title: "Flujograma General de Gestión de Accesos a TrakCare",
@@ -608,425 +417,94 @@ Departamento de Transformación Digital: Supervisa el cumplimiento del protocolo
                 }
             };
             
-            console.log('✅ Contenido embebido cargado');
-            console.log('📋 Secciones disponibles:', Object.keys(embeddedContent));
-            console.log('🔢 Total de secciones:', Object.keys(embeddedContent).length);
-            
             protocolContent = embeddedContent;
-            
-            // Generar la navegación y cargar el contenido inicial
-            console.log('🎯 Generando navegación...');
             generateSidebar();
-            console.log('📄 Cargando contenido inicial (seccion-1)...');
             loadContent('seccion-1');
         }
 
-        // Función para obtener el icono según la sección
-        function getIconForSection(key) {
-            const iconMap = {
-                'seccion-1': 'fas fa-info-circle',
-                'seccion-2': 'fas fa-bullseye',
-                'seccion-3': 'fas fa-globe',
-                'seccion-4': 'fas fa-book',
-                'seccion-5': 'fas fa-user-check',
-                'seccion-6': 'fas fa-shield-alt',
-                'seccion-7': 'fas fa-users',
-                'seccion-8': 'fas fa-clipboard-list',
-                'seccion-9': 'fas fa-user-plus',
-                'seccion-10': 'fas fa-user-times',
-                'seccion-11': 'fas fa-user-edit',
-                'seccion-12': 'fas fa-key',
-                'seccion-13': 'fas fa-graduation-cap',
-                'seccion-14': 'fas fa-chart-line',
-                'seccion-15': 'fas fa-project-diagram',
-                'seccion-16': 'fas fa-paperclip'
-            };
-            
-            return iconMap[key] || 'fas fa-file-alt';
-        }
-
-        // Función para formatear el contenido con HTML
         function formatContent(text) {
-            console.log('Formateando contenido:', text.substring(0, 200) + '...');
-            console.log('🔍 Longitud del contenido:', text.length);
-            console.log('🔍 Primeras 10 líneas:', text.split('\n').slice(0, 10));
-            
-            // Detectar secciones específicas por su contenido
-            let isDefinitionsSection = text.includes('TrakCare:') && text.includes('MDS (Mesa de Servicio):');
+            let isDefinitionsSection = text.includes('TrakCare:') && text.includes('Unidad de Gestión de la Información:');
             let isPrinciplesSection = text.includes('Principio de menor privilegio:');
             let isRolesSection = text.includes('Colaborador Solicitante:') && text.includes('Jefatura / Supervisor:');
             
-            console.log('🔍 Es sección de definiciones:', isDefinitionsSection);
-            console.log('🔍 Es sección de principios:', isPrinciplesSection);
-            console.log('🔍 Es sección de roles:', isRolesSection);
-            console.log('🔍 Contenido de principios encontrado:', text.includes('Principio de menor privilegio:'));
-            console.log('🔍 Contenido de individualidad encontrado:', text.includes('Individualidad e intransferibilidad:'));
-            console.log('🔍 Contenido de acceso condicionado encontrado:', text.includes('Acceso condicionado a habilitación previa:'));
-            console.log('🔍 Texto completo de principios:', text);
-            
-            // Si es una de las tres secciones específicas, usar layout de dos columnas
             if (isDefinitionsSection || isPrinciplesSection || isRolesSection) {
                 const lines = text.split('\n').filter(line => line.trim());
+                const items = lines.filter(line => line.includes(':') && !line.startsWith('http'));
+                const mid = Math.ceil(items.length / 2);
+                const left = items.slice(0, mid);
+                const right = items.slice(mid);
                 
-                if (isDefinitionsSection) {
-                    // Formatear definiciones en dos columnas
-                    const definitionItems = lines.filter(line => line.includes(':') && !line.startsWith('http'));
-                    const leftColumn = definitionItems.slice(0, Math.ceil(definitionItems.length / 2));
-                    const rightColumn = definitionItems.slice(Math.ceil(definitionItems.length / 2));
-                    
-                    console.log('📋 Definiciones encontradas:', definitionItems.length);
-                    console.log('📋 Columna izquierda:', leftColumn.length, 'elementos');
-                    console.log('📋 Columna derecha:', rightColumn.length, 'elementos');
-                    
-                    return `
-                        <div class="content-card-enhanced p-6 rounded-xl">
-                            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                                <div class="space-y-4">
-                                    ${leftColumn.map(line => {
-                                        const [term, definition] = line.split(':').map(s => s.trim());
-                                        return `
-                                            <div class="definition-card p-4 rounded-lg border-l-4 border-blue-500">
-                                                <h4 class="font-bold text-blue-800 text-base mb-2 flex items-center">
-                                                    <i class="fas fa-bookmark text-blue-600 mr-2"></i>
-                                                    ${term}:
-                                                </h4>
-                                                <p class="content-text text-sm ml-6 leading-relaxed">${definition}</p>
-                                            </div>
-                                        `;
-                                    }).join('')}
-                                </div>
-                                <div class="space-y-4">
-                                    ${rightColumn.map(line => {
-                                        const [term, definition] = line.split(':').map(s => s.trim());
-                                        return `
-                                            <div class="definition-card p-4 rounded-lg border-l-4 border-blue-500">
-                                                <h4 class="font-bold text-blue-800 text-base mb-2 flex items-center">
-                                                    <i class="fas fa-bookmark text-blue-600 mr-2"></i>
-                                                    ${term}:
-                                                </h4>
-                                                <p class="content-text text-sm ml-6 leading-relaxed">${definition}</p>
-                                            </div>
-                                        `;
-                                    }).join('')}
-                                </div>
+                const icon = isRolesSection ? 'fa-user-tie' : (isPrinciplesSection ? 'fa-shield-alt' : 'fa-bookmark');
+
+                return `
+                    <div class="content-card-enhanced p-6 rounded-xl">
+                        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                            <div class="space-y-4">
+                                ${left.map(line => renderItem(line, icon)).join('')}
+                            </div>
+                            <div class="space-y-4">
+                                ${right.map(line => renderItem(line, icon)).join('')}
                             </div>
                         </div>
-                    `;
-                } else if (isPrinciplesSection) {
-                    // Formatear principios en dos columnas
-                    const principleItems = lines.filter(line => {
-                        const trimmedLine = line.trim();
-                        return trimmedLine.includes(':') && !trimmedLine.startsWith('http');
-                    });
-                    const leftColumn = principleItems.slice(0, Math.ceil(principleItems.length / 2));
-                    const rightColumn = principleItems.slice(Math.ceil(principleItems.length / 2));
-                    
-                    console.log('📋 Principios encontrados:', principleItems.length);
-                    console.log('📋 Columna izquierda:', leftColumn.length, 'elementos');
-                    console.log('📋 Columna derecha:', rightColumn.length, 'elementos');
-                    
-                    return `
-                        <div class="content-card-enhanced p-6 rounded-xl">
-                            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                                <div class="space-y-4">
-                                    ${leftColumn.map(line => {
-                                        const [principle, description] = line.split(':').map(s => s.trim());
-                                        return `
-                                            <div class="definition-card p-4 rounded-lg border-l-4 border-blue-500">
-                                                <h4 class="font-bold text-blue-800 text-base mb-2 flex items-center">
-                                                    <i class="fas fa-shield-alt text-blue-600 mr-2"></i>
-                                                    ${principle}:
-                                                </h4>
-                                                <p class="content-text text-sm ml-6 leading-relaxed">${description}</p>
-                                            </div>
-                                        `;
-                                    }).join('')}
-                                </div>
-                                <div class="space-y-4">
-                                    ${rightColumn.map(line => {
-                                        const [principle, description] = line.split(':').map(s => s.trim());
-                                        return `
-                                            <div class="definition-card p-4 rounded-lg border-l-4 border-blue-500">
-                                                <h4 class="font-bold text-blue-800 text-base mb-2 flex items-center">
-                                                    <i class="fas fa-shield-alt text-blue-600 mr-2"></i>
-                                                    ${principle}:
-                                                </h4>
-                                                <p class="content-text text-sm ml-6 leading-relaxed">${description}</p>
-                                            </div>
-                                        `;
-                                    }).join('')}
-                                </div>
-                            </div>
-                        </div>
-                    `;
-                } else if (isRolesSection) {
-                    // Formatear roles en dos columnas
-                    const roleItems = lines.filter(line => line.includes(':') && !line.startsWith('http'));
-                    const leftColumn = roleItems.slice(0, Math.ceil(roleItems.length / 2));
-                    const rightColumn = roleItems.slice(Math.ceil(roleItems.length / 2));
-                    
-                    console.log('📋 Roles encontrados:', roleItems.length);
-                    console.log('📋 Columna izquierda:', leftColumn.length, 'elementos');
-                    console.log('📋 Columna derecha:', rightColumn.length, 'elementos');
-                    
-                    return `
-                        <div class="content-card-enhanced p-6 rounded-xl">
-                            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                                <div class="space-y-4">
-                                    ${leftColumn.map(line => {
-                                        const [role, responsibility] = line.split(':').map(s => s.trim());
-                                        return `
-                                            <div class="bg-gradient-to-r from-blue-50 to-indigo-50 p-4 rounded-lg border border-blue-200 shadow-sm hover:shadow-md transition-all duration-300">
-                                                <h4 class="font-bold text-blue-900 text-base mb-2 flex items-center">
-                                                    <i class="fas fa-user-tie text-blue-600 mr-2"></i>
-                                                    ${role}:
-                                                </h4>
-                                                <p class="content-text text-blue-800 text-sm ml-6 leading-relaxed">${responsibility}</p>
-                                            </div>
-                                        `;
-                                    }).join('')}
-                                </div>
-                                <div class="space-y-4">
-                                    ${rightColumn.map(line => {
-                                        const [role, responsibility] = line.split(':').map(s => s.trim());
-                                        return `
-                                            <div class="bg-gradient-to-r from-blue-50 to-indigo-50 p-4 rounded-lg border border-blue-200 shadow-sm hover:shadow-md transition-all duration-300">
-                                                <h4 class="font-bold text-blue-900 text-base mb-2 flex items-center">
-                                                    <i class="fas fa-user-tie text-blue-600 mr-2"></i>
-                                                    ${role}:
-                                                </h4>
-                                                <p class="content-text text-blue-800 text-sm ml-6 leading-relaxed">${responsibility}</p>
-                                            </div>
-                                        `;
-                                    }).join('')}
-                                </div>
-                            </div>
-                        </div>
-                    `;
-                }
+                    </div>
+                `;
             }
             
-            // Para el resto de secciones, usar el formato normal
             const paragraphs = text.split('\n\n').filter(p => p.trim());
-            
             let html = '<div class="space-y-6">';
-            
-            paragraphs.forEach((paragraph, index) => {
-                if (paragraph.trim()) {
-                    const lines = paragraph.split('\n');
-                    let hasDefinitions = lines.some(line => line.includes(':') && !line.startsWith('http'));
-                    
-                    if (hasDefinitions) {
-                        // Formatear definiciones normales
-                        html += `
-                            <div class="content-card-enhanced p-6 rounded-xl">
-                                <div class="space-y-4">
-                                    ${lines.map(line => {
-                                        if (line.includes(':') && !line.startsWith('http')) {
-                                            const [term, definition] = line.split(':').map(s => s.trim());
-                                            return `
-                                                <div class="definition-card p-4 rounded-lg border-l-4 border-blue-500">
-                                                    <h4 class="font-bold text-blue-800 text-base mb-2 flex items-center">
-                                                        <i class="fas fa-bookmark text-blue-600 mr-2"></i>
-                                                        ${term}:
-                                                    </h4>
-                                                    <p class="content-text text-sm ml-6 leading-relaxed">${definition}</p>
-                                                </div>
-                                            `;
-                                        } else if (line.trim()) {
-                                            return `<p class="content-text text-base">${line.trim()}</p>`;
-                                        }
-                                        return '';
-                                    }).join('')}
-                                </div>
-                            </div>
-                        `;
-                    } else {
-                        // Verificar si contiene listas
-                        let hasListItems = lines.some(line => line.trim().startsWith('-') || line.trim().startsWith('•'));
-                        
-                        if (hasListItems) {
-                            // Formatear listas normales
-                            html += `
-                                <div class="content-card-enhanced p-6 rounded-xl">
-                                    <div class="space-y-4">
-                                        ${lines.map(line => {
-                                            const trimmedLine = line.trim();
-                                            if (trimmedLine.startsWith('-') || trimmedLine.startsWith('•')) {
-                                                const content = trimmedLine.replace(/^[-•]\s*/, '');
-                                                return `
-                                                    <div class="bg-gradient-to-r from-green-50 to-emerald-50 p-4 rounded-lg border border-green-200 shadow-sm hover:shadow-md transition-all duration-300">
-                                                        <div class="flex items-start space-x-3">
-                                                            <div class="flex-shrink-0">
-                                                                <i class="fas fa-check-circle text-green-600 text-lg mt-0.5"></i>
-                                                            </div>
-                                                            <div class="flex-1">
-                                                                <p class="content-text text-green-800 font-medium text-sm leading-relaxed">${content}</p>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                `;
-                                            } else if (trimmedLine) {
-                                                return `<p class="content-text text-base mb-3">${trimmedLine}</p>`;
-                                            }
-                                            return '';
-                                        }).join('')}
-                                    </div>
-                                </div>
-                            `;
-                        } else {
-                            // Formatear como párrafo normal
-                            html += `
-                                <div class="content-card-enhanced p-6 rounded-xl">
-                                    <div class="content-text">
-                                        ${paragraph.trim().split('\n').map(line => 
-                                            line.trim() ? `<p class="mb-4 last:mb-0">${line.trim()}</p>` : ''
-                                        ).join('')}
-                                    </div>
-                                </div>
-                            `;
-                        }
-                    }
-                }
+            paragraphs.forEach(paragraph => {
+                html += `<div class="content-card-enhanced p-6 rounded-xl"><div class="content-text">${paragraph.replace(/\n/g, '<br>')}</div></div>`;
             });
-            
             html += '</div>';
-            
-            console.log('HTML generado:', html.substring(0, 200) + '...');
             return html;
         }
 
-        // Contenido de fallback en caso de error
-        function loadFallbackContent() {
-            protocolContent = {
-                "introduccion": {
-                    title: "Introducción",
-                    icon: "fas fa-info-circle",
-                    content: `
-                        <div class="info-box p-8 floating-card">
-                            <div class="flex items-center mb-6">
-                                <i class="fas fa-info-circle text-3xl text-blue-600 mr-4"></i>
-                                <h3 class="text-2xl font-bold text-gray-800">Protocolo de Gestión de Accesos</h3>
-                            </div>
-                            <p class="text-gray-700 mb-6 text-lg leading-relaxed">
-                                Este protocolo establece las directrices para la gestión de accesos al sistema TrakCare 
-                                en el Hospital Metropolitano. Define los procedimientos para solicitar, aprobar y administrar 
-                                los accesos de usuarios al sistema de información clínica.
-                            </p>
-                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                <div class="bg-white p-6 rounded-xl shadow-lg hover-lift">
-                                    <div class="flex items-center mb-4">
-                                        <i class="fas fa-shield-alt text-blue-600 text-xl mr-3"></i>
-                                        <h4 class="font-semibold text-gray-800">Seguridad</h4>
-                                    </div>
-                                    <p class="text-gray-600">Gestión segura de accesos al sistema</p>
-                                </div>
-                                <div class="bg-white p-6 rounded-xl shadow-lg hover-lift">
-                                    <div class="flex items-center mb-4">
-                                        <i class="fas fa-users text-blue-600 text-xl mr-3"></i>
-                                        <h4 class="font-semibold text-gray-800">Usuarios</h4>
-                                    </div>
-                                    <p class="text-gray-600">Personal autorizado del hospital</p>
-                                </div>
-                            </div>
-                        </div>
-                    `
-                }
-            };
-            
-            generateSidebar();
-            loadContent('introduccion');
+        function renderItem(line, icon) {
+            const [term, desc] = line.split(':').map(s => s.trim());
+            return `
+                <div class="definition-card p-4 rounded-lg border-l-4 border-blue-500">
+                    <h4 class="font-bold text-blue-800 text-base mb-2 flex items-center">
+                        <i class="fas ${icon} text-blue-600 mr-2"></i>
+                        ${term}:
+                    </h4>
+                    <p class="content-text text-sm ml-6 leading-relaxed">${desc}</p>
+                </div>
+            `;
         }
 
-        // Función para generar la navegación horizontal
         function generateSidebar() {
-            const horizontalNav = document.getElementById('horizontal-nav');
+            const nav = document.getElementById('horizontal-nav');
             let navHTML = '';
-            
-            console.log('🎯 Generando navegación horizontal para secciones:', Object.keys(protocolContent));
-            console.log('📊 Total de secciones en protocolContent:', Object.keys(protocolContent).length);
-            
             Object.keys(protocolContent).forEach((key, index) => {
                 const item = protocolContent[key];
-                console.log(`📝 Agregando pestaña ${index + 1}: ${key} - "${item.title}"`);
-                
-                // Acortar títulos largos para las pestañas
-                let shortTitle = item.title;
-                if (shortTitle.length > 25) {
-                    shortTitle = shortTitle.substring(0, 22) + '...';
-                }
-                
+                const shortTitle = item.title.length > 25 ? item.title.substring(0, 22) + '...' : item.title;
                 navHTML += `
-                    <div class="nav-tab ${index === 0 ? 'active' : ''}" 
-                         onclick="loadContent('${key}')" 
-                         title="${item.title}">
+                    <div class="nav-tab ${index === 0 ? 'active' : ''}" onclick="loadContent('${key}')">
                         <i class="${item.icon}"></i>
                         <span>${shortTitle}</span>
                     </div>
                 `;
             });
-            
-            horizontalNav.innerHTML = navHTML;
-            console.log('✅ Navegación horizontal generada con', Object.keys(protocolContent).length, 'pestañas');
-            
-            // Configurar botones de navegación
+            nav.innerHTML = navHTML;
             setupNavigationButtons();
         }
 
-        // Función para configurar botones de navegación
         function setupNavigationButtons() {
-            const prevBtn = document.getElementById('prev-tab');
-            const nextBtn = document.getElementById('next-tab');
-            const navContainer = document.getElementById('horizontal-nav');
-            
-            prevBtn.addEventListener('click', () => {
-                navContainer.scrollBy({ left: -200, behavior: 'smooth' });
-            });
-            
-            nextBtn.addEventListener('click', () => {
-                navContainer.scrollBy({ left: 200, behavior: 'smooth' });
-            });
+            document.getElementById('prev-tab').onclick = () => document.getElementById('horizontal-nav').scrollBy({ left: -200, behavior: 'smooth' });
+            document.getElementById('next-tab').onclick = () => document.getElementById('horizontal-nav').scrollBy({ left: 200, behavior: 'smooth' });
         }
 
-        // Función para cargar contenido
-        function loadContent(sectionKey) {
-            console.log('Cargando contenido para sección:', sectionKey);
-            const contentArea = document.getElementById('content-area');
-            const section = protocolContent[sectionKey];
-            
-            console.log('Sección encontrada:', section ? section.title : 'NO ENCONTRADA');
-            
+        function loadContent(key) {
+            const area = document.getElementById('content-area');
+            const section = protocolContent[key];
             if (section) {
-                console.log('Contenido de la sección:', section.content.substring(0, 100) + '...');
-                contentArea.innerHTML = section.content;
-                
-                // Actualizar navegación activa
-                document.querySelectorAll('.nav-tab').forEach(tab => {
-                    tab.classList.remove('active');
-                });
-                if (event && event.target) {
-                    event.target.closest('.nav-tab').classList.add('active');
-                }
-                
-                // Agregar animación de entrada
-                const contentElements = contentArea.querySelectorAll('.floating-card, .content-section');
-                contentElements.forEach((el, index) => {
-                    el.style.animationDelay = `${index * 0.1}s`;
-                    el.classList.add('slide-in');
-                });
-                
-                // Scroll suave al contenido
-                contentArea.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            } else {
-                console.error('Sección no encontrada:', sectionKey);
-                console.log('Secciones disponibles:', Object.keys(protocolContent));
+                area.innerHTML = section.content;
+                document.querySelectorAll('.nav-tab').forEach(t => t.classList.toggle('active', t.innerText.includes(section.title.substring(0, 5))));
+                area.scrollIntoView({ behavior: 'smooth', block: 'start' });
             }
         }
 
-        // Inicialización
-        document.addEventListener('DOMContentLoaded', function() {
-            loadProtocolContent();
-        });
+        document.addEventListener('DOMContentLoaded', loadProtocolContent);
     </script>
 </body>
-</html> 
+</html>
