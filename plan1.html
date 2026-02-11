@@ -14,8 +14,10 @@
         .custom-scroll::-webkit-scrollbar { width: 8px; }
         .custom-scroll::-webkit-scrollbar-track { background: #f1f1f1; }
         .custom-scroll::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
-        .animate-fade-in { animation: fadeIn 0.4s ease-out; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        
+        /* Animaciones para suavizar la interfaz */
+        .animate-scale-in { animation: scaleIn 0.2s ease-out; }
+        @keyframes scaleIn { from { opacity: 0; transform: scale(0.98); } to { opacity: 1; transform: scale(1); } }
     </style>
 </head>
 <body>
@@ -33,37 +35,42 @@
             useEffect(() => {
                 const fetchData = async () => {
                     try {
-                        // Cambia el nombre aquí si renombras el archivo exportado de Notion
                         const response = await fetch('tareas.html');
+                        if (!response.ok) throw new Error("Archivo tareas.html no encontrado");
                         const htmlText = await response.text();
                         
                         const parser = new DOMParser();
                         const doc = parser.parseFromString(htmlText, 'text/html');
-                        const rows = Array.from(doc.querySelectorAll('table tr')).slice(1); // Omitir cabecera
+                        const rows = Array.from(doc.querySelectorAll('tr')).slice(1);
 
                         const mappedData = rows.map((row, index) => {
-                            const cells = row.cells;
-                            if (!cells || cells.length < 5) return null;
+                            // Usamos selectores exactos del HTML de Notion
+                            const id = row.querySelector('.cell-RF\\=o')?.innerText.trim() || "";
+                            const name = row.querySelector('.cell-title')?.innerText.trim() || "";
+                            const sectionRaw = row.querySelector('.cell-\\;h\\]e')?.innerText.trim() || "General";
+                            const desc = row.querySelector('.cell-Q\\{I\\;')?.innerText.trim() || "Sin descripción.";
+                            
+                            if (!name) return null;
 
-                            // Mapeo basado en las clases observadas en tu archivo HTML de Notion
                             return {
-                                section: cells[0]?.innerText.trim().replace(/^[🟦 ]+/, '') || 'General',
-                                id: cells[1]?.innerText.trim() || `T-${index}`,
-                                name: cells[2]?.innerText.trim() || 'Sin Título',
-                                start: cells[3]?.innerText.trim().replace('@', '') || 'Pendiente',
-                                end: cells[4]?.innerText.trim().replace('@', '') || 'Pendiente',
-                                priority: cells[5]?.innerText.trim() || 'Normal',
-                                instrument: cells[7]?.innerText.trim() || 'N/A',
-                                ref: cells[8]?.innerText.trim() || 'N/A',
-                                desc: cells[9]?.innerText.trim() || 'Sin descripción disponible.',
-                                goal: 'Revisar documentación adjunta' // Notion a veces no exporta todas las columnas en el mini-html
+                                // Usamos una combinación de ID e Index para asegurar unicidad absoluta en la selección
+                                uid: `task-${id}-${index}`, 
+                                id: id,
+                                name: name,
+                                section: sectionRaw.replace(/[🟦]/g, '').trim(),
+                                start: row.querySelector('.cell-uvVX')?.innerText.trim().replace('@', '') || "TBD",
+                                end: row.querySelector('.cell-ejSF')?.innerText.trim().replace('@', '') || "TBD",
+                                priority: row.querySelector('.cell-rVR\\@')?.innerText.trim() || "Normal",
+                                ref: row.querySelector('.cell-_sWp')?.innerText.trim() || "N/A",
+                                instrument: row.querySelector('.cell-zVh\\[')?.innerText.trim() || "N/A",
+                                desc: desc
                             };
-                        }).filter(item => item !== null && item.name !== '');
+                        }).filter(Boolean);
 
                         setActivities(mappedData);
                         setLoading(false);
                     } catch (error) {
-                        console.error("Error cargando el HTML de Notion:", error);
+                        console.error(error);
                         setLoading(false);
                     }
                 };
@@ -79,41 +86,39 @@
                 ? activities 
                 : activities.filter(a => a.section === filter);
 
-            if (loading) return (
-                <div className="flex h-screen items-center justify-center text-slate-400 font-bold uppercase tracking-widest">
-                    <i className="fas fa-circle-notch animate-spin mr-3"></i> Cargando Base de Datos Notion...
-                </div>
-            );
+            if (loading) return <div className="flex h-screen items-center justify-center text-slate-400 font-bold uppercase tracking-widest animate-pulse">Cargando Planificación...</div>;
 
             return (
-                <div className="max-w-6xl mx-auto p-4 md:p-8 animate-fade-in">
+                <div className="max-w-6xl mx-auto p-4 md:p-8">
+                    {/* Cabecera Estilo Original */}
                     <header className="mb-12 flex flex-col md:flex-row md:items-end justify-between gap-6">
                         <div>
                             <div className="flex items-center gap-3 mb-2">
                                 <span className="h-1 w-12 bg-blue-600 rounded-full"></span>
                                 <span className="text-blue-600 font-black text-xs uppercase tracking-[0.3em]">Hoja de Ruta 2026</span>
                             </div>
-                            <h1 className="text-4xl md:text-5xl font-black text-slate-900 tracking-tight leading-none">
-                                Ciberseguridad<br/><span className="text-blue-600 italic">HOSMET</span>
-                            </h1>
+                            <h1 className="text-4xl md:text-5xl font-black text-slate-900 tracking-tight">Ciberseguridad<br/><span className="text-blue-600 italic">HOSMET</span></h1>
                         </div>
-                        <div className="hidden md:flex bg-white p-4 rounded-2xl shadow-sm border border-slate-100 items-center gap-4">
-                            <div className="h-10 w-10 bg-blue-50 rounded-full flex items-center justify-center text-blue-600 font-bold">
-                                {activities.length}
+                        <div className="bg-white p-4 rounded-2xl shadow-sm border border-slate-100 flex items-center gap-4">
+                            <div className="h-10 w-10 bg-emerald-100 rounded-full flex items-center justify-center text-emerald-600">
+                                <i className="fas fa-check-double"></i>
                             </div>
-                            <p className="text-[10px] font-black text-slate-400 uppercase leading-tight">Tareas<br/>Importadas</p>
+                            <div>
+                                <p className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Estado</p>
+                                <p className="text-sm font-black text-slate-700">{activities.length} Actividades Sincronizadas</p>
+                            </div>
                         </div>
                     </header>
 
-                    {/* Menú Original Restaurado */}
-                    <nav className="flex flex-wrap gap-2 mb-10 pb-4 border-b border-slate-100 overflow-x-auto custom-scroll">
+                    {/* Menú de Navegación Original */}
+                    <nav className="flex flex-wrap gap-2 mb-10 pb-4 border-b border-slate-100 custom-scroll overflow-x-auto">
                         {menuItems.map(item => (
                             <button
                                 key={item}
                                 onClick={() => setFilter(item)}
-                                className={`px-5 py-2.5 rounded-full text-xs font-black transition-all duration-300 uppercase whitespace-nowrap ${
+                                className={`px-5 py-2.5 rounded-full text-xs font-black transition-all duration-300 uppercase tracking-wider ${
                                     filter === item 
-                                    ? 'bg-slate-900 text-white shadow-lg' 
+                                    ? 'bg-slate-900 text-white shadow-lg shadow-slate-200 scale-105' 
                                     : 'bg-white text-slate-400 hover:bg-slate-50 border border-slate-100'
                                 }`}
                             >
@@ -123,74 +128,96 @@
                     </nav>
 
                     <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
-                        {/* Lista de Actividades */}
+                        {/* Lista de Actividades con corrección de selección */}
                         <div className="lg:col-span-7 space-y-4 max-h-[700px] overflow-y-auto pr-4 custom-scroll">
                             {filteredActivities.map((activity) => (
                                 <div 
-                                    key={activity.id}
+                                    key={activity.uid}
                                     onClick={() => setSelectedTask(activity)}
-                                    className={`p-5 rounded-2xl border-2 transition-all cursor-pointer bg-white group ${
-                                        selectedTask?.id === activity.id 
-                                        ? 'border-blue-500 bg-blue-50/30' 
-                                        : 'border-transparent hover:border-slate-200'
+                                    className={`group p-5 rounded-2xl border-2 transition-all cursor-pointer bg-white ${
+                                        selectedTask?.uid === activity.uid 
+                                        ? 'border-blue-500 shadow-xl shadow-blue-50 bg-blue-50/30' 
+                                        : 'border-transparent hover:border-slate-200 shadow-sm'
                                     }`}
                                 >
-                                    <div className="flex justify-between items-start mb-2">
-                                        <span className="text-[10px] font-black px-2 py-1 bg-slate-900 text-white rounded uppercase tracking-tighter">
+                                    <div className="flex justify-between items-start mb-3">
+                                        <span className="text-[10px] font-black px-2.5 py-1 bg-slate-900 text-white rounded-md tracking-tighter">
                                             {activity.id}
                                         </span>
-                                        {activity.priority && (
-                                            <span className="text-[9px] font-black text-blue-500 uppercase tracking-widest">
-                                                {activity.priority}
-                                            </span>
-                                        )}
+                                        <span className={`text-[9px] font-black px-2.5 py-1 rounded-full border ${
+                                            activity.priority.includes('CRÍTICA') 
+                                            ? 'bg-red-50 text-red-600 border-red-100' 
+                                            : 'bg-blue-50 text-blue-600 border-blue-100'
+                                        }`}>
+                                            {activity.priority || 'NORMAL'}
+                                        </span>
                                     </div>
-                                    <h3 className="text-base font-bold text-slate-800 group-hover:text-blue-600 transition-colors">
+                                    <h3 className="text-base font-bold text-slate-800 leading-tight group-hover:text-blue-600 transition-colors">
                                         {activity.name}
                                     </h3>
-                                    <div className="mt-4 flex gap-6 text-slate-400 font-bold text-[10px] uppercase">
-                                        <span><i className="far fa-calendar-alt mr-2 text-blue-400"></i> {activity.start}</span>
-                                        <span><i className="fas fa-flag-checkered mr-2 text-slate-300"></i> {activity.end}</span>
+                                    <div className="mt-4 flex items-center gap-6 text-slate-400 font-bold text-[10px] uppercase tracking-widest">
+                                        <div className="flex items-center gap-2">
+                                            <i className="far fa-calendar text-blue-400"></i>
+                                            {activity.start}
+                                        </div>
+                                        <div className="flex items-center gap-2">
+                                            <i className="fas fa-flag-checkered text-slate-500"></i>
+                                            {activity.end}
+                                        </div>
                                     </div>
                                 </div>
                             ))}
                         </div>
 
-                        {/* Panel de Detalle */}
-                        <div className="lg:col-span-5">
+                        {/* Panel de Detalle Estilo Original */}
+                        <div className="lg:col-span-5 sticky top-8">
                             {selectedTask ? (
-                                <div className="bg-white rounded-3xl p-8 border border-slate-100 shadow-xl min-h-[500px] flex flex-col animate-fade-in">
-                                    <h2 className="text-2xl font-black text-slate-900 mb-4 leading-tight">{selectedTask.name}</h2>
-                                    <div className="flex-grow">
-                                        <p className="text-slate-500 text-sm leading-relaxed mb-8">{selectedTask.desc}</p>
-                                        
-                                        <div className="grid grid-cols-2 gap-4 mb-6">
-                                            <div className="p-4 bg-slate-50 rounded-xl border border-slate-100">
+                                <div className="bg-white rounded-3xl p-8 border border-slate-100 shadow-2xl shadow-slate-200/50 min-h-[500px] flex flex-col animate-scale-in">
+                                    <div className="mb-8 pb-6 border-b border-slate-50">
+                                        <div className="flex items-center gap-2 mb-4">
+                                            <span className="px-3 py-1 bg-blue-600 text-white text-[10px] font-black rounded-lg uppercase tracking-widest">Actividad {selectedTask.id}</span>
+                                        </div>
+                                        <h2 className="text-2xl font-black text-slate-900 leading-tight mb-4">{selectedTask.name}</h2>
+                                        <p className="text-slate-500 text-sm leading-relaxed font-medium">{selectedTask.desc}</p>
+                                    </div>
+
+                                    <div className="space-y-6 flex-grow">
+                                        <div className="grid grid-cols-2 gap-4">
+                                            <div className="p-4 bg-slate-50 rounded-2xl border border-slate-100">
                                                 <h4 className="text-[10px] font-black text-slate-400 uppercase mb-1">Referencia</h4>
                                                 <p className="text-xs font-bold text-slate-700">{selectedTask.ref}</p>
                                             </div>
-                                            <div className="p-4 bg-slate-50 rounded-xl border border-slate-100">
+                                            <div className="p-4 bg-slate-50 rounded-2xl border border-slate-100">
                                                 <h4 className="text-[10px] font-black text-slate-400 uppercase mb-1">Instrumento</h4>
                                                 <p className="text-xs font-bold text-slate-700">{selectedTask.instrument}</p>
                                             </div>
                                         </div>
+
+                                        <div className="p-6 bg-emerald-50 rounded-2xl border border-emerald-100">
+                                            <h4 className="text-[10px] font-black text-emerald-600 uppercase mb-1">Categoría</h4>
+                                            <p className="text-sm font-bold text-emerald-900 italic">{selectedTask.section}</p>
+                                        </div>
                                     </div>
                                     
-                                    <div className="pt-6 border-t border-slate-50">
-                                        <div className="flex items-center gap-3 text-slate-400 text-[10px] font-black uppercase">
-                                            <i className="fas fa-folder-open"></i>
-                                            <span>Sección: {selectedTask.section}</span>
-                                        </div>
+                                    <div className="mt-8 pt-6 border-t border-slate-50 text-center">
+                                        <p className="text-[10px] font-black text-slate-300 uppercase tracking-[0.4em]">HOSMET CIBERSEGURIDAD 2026</p>
                                     </div>
                                 </div>
                             ) : (
-                                <div className="h-full min-h-[400px] flex flex-col items-center justify-center p-12 bg-white rounded-3xl border-2 border-dashed border-slate-200 text-slate-400 text-center">
-                                    <i className="fas fa-hand-pointer text-4xl mb-4 opacity-10"></i>
-                                    <p className="text-sm font-bold uppercase tracking-widest">Selecciona una actividad</p>
+                                <div className="h-full min-h-[400px] flex flex-col items-center justify-center p-12 bg-white rounded-3xl border-2 border-dashed border-slate-200 text-slate-400 text-center shadow-sm">
+                                    <div className="h-20 w-20 bg-slate-50 rounded-full flex items-center justify-center mb-6">
+                                        <i className="fas fa-mouse-pointer text-3xl opacity-20 text-blue-500"></i>
+                                    </div>
+                                    <h3 className="text-xl font-black text-slate-300 uppercase tracking-tighter mb-2">Vista Detallada</h3>
+                                    <p className="text-sm font-medium px-4 leading-relaxed">Selecciona una actividad de la lista para visualizar los requerimientos técnicos.</p>
                                 </div>
                             )}
                         </div>
                     </div>
+
+                    <footer className="mt-20 text-center text-slate-300 text-[10px] font-black uppercase tracking-[0.4em] pb-12 border-t border-slate-50 pt-12">
+                        HOSMET 2026 • Planificación Dinámica
+                    </footer>
                 </div>
             );
         };
@@ -200,4 +227,3 @@
     </script>
 </body>
 </html>
-
