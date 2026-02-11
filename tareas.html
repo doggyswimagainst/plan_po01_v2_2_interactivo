@@ -1,0 +1,713 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>BD TAREAS</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+/* Override strong tags inside headings to maintain consistent weight */
+h1 strong,
+h2 strong,
+h3 strong {
+	font-weight: 600;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 124, 215, 0.094);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(229, 242, 252, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 118, 217, 0.203); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="2fcdabdc-66ac-8016-9fb0-cbe1a90c5b70" class="page sans"><header><h1 class="page-title" dir="auto">BD TAREAS</h1><p class="page-description" dir="auto"></p></header><div class="page-body"><table class="collection-content"><thead><tr><th><span class="icon property-icon"><img src="https://www.notion.so/icons/arrow-northeast_gray.svg" style="width:14px;height:14px;display:block"/></span>PROYECTOS</th><th><span class="icon property-icon"><img src="https://www.notion.so/icons/arrow-northeast_gray.svg" style="width:14px;height:14px;display:block"/></span>SECCIONES</th><th><span class="icon property-icon"><img src="https://www.notion.so/icons/description_gray.svg" style="width:14px;height:14px;display:block"/></span>ID</th><th><span class="icon property-icon"><img src="https://www.notion.so/icons/font_gray.svg" style="width:14px;height:14px;display:block"/></span>Name</th><th><span class="icon property-icon"><img src="https://www.notion.so/icons/calendar_gray.svg" style="width:14px;height:14px;display:block"/></span>Start Date</th><th><span class="icon property-icon"><img src="https://www.notion.so/icons/calendar_gray.svg" style="width:14px;height:14px;display:block"/></span>End Date</th><th><span class="icon property-icon"><img src="https://www.notion.so/icons/arrow-northeast_gray.svg" style="width:14px;height:14px;display:block"/></span>RESPONSABLES</th><th><span class="icon property-icon"><img src="https://www.notion.so/icons/checkmark-square_gray.svg" style="width:14px;height:14px;display:block"/></span>Finalizada</th><th><span class="icon property-icon"><img src="https://www.notion.so/icons/description_gray.svg" style="width:14px;height:14px;display:block"/></span>Referencia Normativa</th><th><span class="icon property-icon"><img src="https://www.notion.so/icons/description_gray.svg" style="width:14px;height:14px;display:block"/></span>Instrumento</th><th><span class="icon property-icon"><img src="https://www.notion.so/icons/description_gray.svg" style="width:14px;height:14px;display:block"/></span>Descripcion</th><th><span class="icon property-icon"><img src="https://www.notion.so/icons/friends_gray.svg" style="width:14px;height:14px;display:block"/></span>Asignee</th><th><span class="icon property-icon"><img src="https://www.notion.so/icons/clock_gray.svg" style="width:14px;height:14px;display:block"/></span>Fecha de creación</th><th><span class="icon property-icon"><img src="https://www.notion.so/icons/user-circle_gray.svg" style="width:14px;height:14px;display:block"/></span>Creado por</th><th><span class="icon property-icon"><img src="https://www.notion.so/icons/clock_gray.svg" style="width:14px;height:14px;display:block"/></span>Última edición</th><th><span class="icon property-icon"><img src="https://www.notion.so/icons/user-circle_gray.svg" style="width:14px;height:14px;display:block"/></span>Última edición por</th><th><span class="icon property-icon"><img src="https://www.notion.so/icons/numero_gray.svg" style="width:14px;height:14px;display:block"/></span>ID 1</th></tr></thead><tbody><tr id="2ffdabdc-66ac-80df-937d-c71907dad6d9"><td class="cell-F\bL"><a href="https://www.notion.so/PROYECTO-CIBERSEGURIDAD-2fcdabdc66ac80cf9a4beaaa7f2ed421?pvs=21"><img class="icon notion-static-icon" src="https://www.notion.so/icons/lock-keyhole_blue.svg"/>PROYECTO CIBERSEGURIDAD</a></td><td class="cell-;h]e"><a href="https://www.notion.so/GOBERNANZA-Y-CUMPLIMIENTO-2fcdabdc66ac800f84c2f62fc3bbfecf?pvs=21">🟦🟦🟦 GOBERNANZA Y CUMPLIMIENTO</a></td><td class="cell-RF=o">F1.7</td><td class="cell-title"><a href="https://www.notion.so/Formalizaci-n-CISO-Enlace-ante-ANCI-2ffdabdc66ac80df937dc71907dad6d9?pvs=21"><span class="icon">📝</span>Formalización CISO/Enlace ante ANCI</a></td><td class="cell-uvVX"><time>@03/02/2026</time></td><td class="cell-ejSF"><time>@06/03/2026</time></td><td class="cell-rVR@"><a href="https://www.notion.so/Direcci-n-Hospital-2fcdabdc66ac80679e9ed7410f44c545?pvs=21">Dirección Hospital</a></td><td class="cell-kKic"><div class="checkbox checkbox-off"></div></td><td class="cell-_sWp">Inst. 1 ANCI</td><td class="cell-zVh[">Resolución Exenta</td><td class="cell-Q{I;">Emisión de Resolución Exenta que designa formalmente al CISO y al Enlace Técnico. Debe otorgar facultades para coordinar transversalmente con Direcciones Médicas y Administrativas. El Enlace debe tener disponibilidad 24/7 para emergencias nacionales.</td><td class="cell-g;qE"><span class="user"><img src="IMG_20200529_102129_601.jpg" class="icon user-icon"/>Guido Corral</span></td><td class="cell-xA{["><time>@6 de febrero de 2026 10:39</time></td><td class="cell-pwjE"><span class="user"><img src="IMG_20200529_102129_601.jpg" class="icon user-icon"/>Guido Corral</span></td><td class="cell-j?h~"><time>@9 de febrero de 2026 9:43</time></td><td class="cell-^MFR"><span class="user"><img src="IMG_20200529_102129_601.jpg" class="icon user-icon"/>Guido Corral</span></td><td class="cell-[vOn">30</td></tr><tr id="2ffdabdc-66ac-80ba-b8ae-eb6f5572f64e"><td class="cell-F\bL"><a href="https://www.notion.so/PROYECTO-CIBERSEGURIDAD-2fcdabdc66ac80cf9a4beaaa7f2ed421?pvs=21"><img class="icon notion-static-icon" src="https://www.notion.so/icons/lock-keyhole_blue.svg"/>PROYECTO CIBERSEGURIDAD</a></td><td class="cell-;h]e"><a href="https://www.notion.so/GOBERNANZA-Y-CUMPLIMIENTO-2fcdabdc66ac800f84c2f62fc3bbfecf?pvs=21">🟦🟦🟦 GOBERNANZA Y CUMPLIMIENTO</a></td><td class="cell-RF=o">F1.8</td><td class="cell-title"><a href="https://www.notion.so/Configuraci-n-Portal-de-Reporte-ANCI-2ffdabdc66ac80bab8aeeb6f5572f64e?pvs=21">Configuración Portal de Reporte ANCI</a></td><td class="cell-uvVX"><time>@03/02/2026</time></td><td class="cell-ejSF"><time>@03/08/2026</time></td><td class="cell-rVR@"><a href="https://www.notion.so/CISO-2fcdabdc66ac80b3af4ed01de825c222?pvs=21">CISO</a>, <a href="https://www.notion.so/Direcci-n-Hospital-2fcdabdc66ac80679e9ed7410f44c545?pvs=21">Dirección Hospital</a></td><td class="cell-kKic"><div class="checkbox checkbox-off"></div></td><td class="cell-_sWp">Inst. 2 ANCI</td><td class="cell-zVh[">Portal ANCI</td><td class="cell-Q{I;">Registro de credenciales institucionales y establecimiento de un flujo interno de escalamiento: de la falla técnica detectada por el SOC/Mesa de Ayuda al CISO, asegurando que la notificación a la ANCI ocurra en menos de 3 horas para incidentes significativos.</td><td class="cell-g;qE"><span class="user"><img src="IMG_20200529_102129_601.jpg" class="icon user-icon"/>Guido Corral</span></td><td class="cell-xA{["><time>@6 de febrero de 2026 11:12</time></td><td class="cell-pwjE"><span class="user"><img src="IMG_20200529_102129_601.jpg" class="icon user-icon"/>Guido Corral</span></td><td class="cell-j?h~"><time>@9 de febrero de 2026 9:43</time></td><td class="cell-^MFR"><span class="user"><img src="IMG_20200529_102129_601.jpg" class="icon user-icon"/>Guido Corral</span></td><td class="cell-[vOn">33</td></tr><tr id="2ffdabdc-66ac-8033-802c-ca7f2196035e"><td class="cell-F\bL"><a href="https://www.notion.so/PROYECTO-CIBERSEGURIDAD-2fcdabdc66ac80cf9a4beaaa7f2ed421?pvs=21"><img class="icon notion-static-icon" src="https://www.notion.so/icons/lock-keyhole_blue.svg"/>PROYECTO CIBERSEGURIDAD</a></td><td class="cell-;h]e"><a href="https://www.notion.so/GESTION-DE-ACTIVOS-2ffdabdc66ac80debc31ed6cdbe48223?pvs=21">🟦🟦🟦 GESTION DE ACTIVOS</a></td><td class="cell-RF=o">F2.1</td><td class="cell-title"><a href="https://www.notion.so/Inventario-Cr-tico-Fase-ANCI-2ffdabdc66ac8033802cca7f2196035e?pvs=21">Inventario Crítico (Fase ANCI)</a></td><td class="cell-uvVX"><time>@03/09/2026</time></td><td class="cell-ejSF"><time>@15/03/2026</time></td><td class="cell-rVR@"><a href="https://www.notion.so/Jefe-de-TI-2fcdabdc66ac800d873ac8395eca8a94?pvs=21">Jefe de TI</a>, <a href="https://www.notion.so/Jefe-Equipos-M-dicos-2fcdabdc66ac804db925c3db6b9bed1f?pvs=21">Jefe Equipos Médicos</a></td><td class="cell-kKic"><div class="checkbox checkbox-off"></div></td><td class="cell-_sWp">Inst. 1 / 3</td><td class="cell-zVh[">IC01</td><td class="cell-Q{I;">Identificación y registro en IC01 de activos que sostienen la vida: Servidores RCE, almacenamiento DICOM (PACS), Middlewares de Laboratorio, Centrales de Monitoreo y equipos IoT Médicos (IoMT). Incluye dependencias de red y energía.</td><td class="cell-g;qE"><span class="user"><img src="IMG_20200529_102129_601.jpg" class="icon user-icon"/>Guido Corral</span></td><td class="cell-xA{["><time>@6 de febrero de 2026 11:12</time></td><td class="cell-pwjE"><span class="user"><img src="IMG_20200529_102129_601.jpg" class="icon user-icon"/>Guido Corral</span></td><td class="cell-j?h~"><time>@9 de febrero de 2026 9:44</time></td><td class="cell-^MFR"><span class="user"><img src="IMG_20200529_102129_601.jpg" class="icon user-icon"/>Guido Corral</span></td><td class="cell-[vOn">34</td></tr><tr id="2ffdabdc-66ac-8037-81a4-f214d03977cb"><td class="cell-F\bL"><a href="https://www.notion.so/PROYECTO-CIBERSEGURIDAD-2fcdabdc66ac80cf9a4beaaa7f2ed421?pvs=21"><img class="icon notion-static-icon" src="https://www.notion.so/icons/lock-keyhole_blue.svg"/>PROYECTO CIBERSEGURIDAD</a></td><td class="cell-;h]e"><a href="https://www.notion.so/GESTON-DE-RIESGOS-2ffdabdc66ac800daa5cf5280d3e12cb?pvs=21">🟦🟦🟦 GESTON DE RIESGOS</a></td><td class="cell-RF=o">F2.7</td><td class="cell-title"><a href="https://www.notion.so/Taller-de-Riesgos-Cl-nicos-Asistenciales-2ffdabdc66ac803781a4f214d03977cb?pvs=21">Taller de Riesgos Clínicos Asistenciales</a></td><td class="cell-uvVX"><time>@16/03/2026</time></td><td class="cell-ejSF"><time>@22/03/2026</time></td><td class="cell-rVR@"><a href="https://www.notion.so/CISO-2fcdabdc66ac80b3af4ed01de825c222?pvs=21">CISO</a>, <a href="https://www.notion.so/Subdirectora-de-Cuidados-2ffdabdc66ac80fda16fe763eb199ac2?pvs=21">Subdirectora de Cuidados</a>, <a href="https://www.notion.so/Subdirector-Medico-2ffdabdc66ac80dea6f4f7cd4aee3df1?pvs=21">Subdirector Medico</a>, <a href="https://www.notion.so/Jefe-de-Calidad-2ffdabdc66ac803a8c88c0aced17c25d?pvs=21">Jefe de Calidad</a></td><td class="cell-kKic"><div class="checkbox checkbox-off"></div></td><td class="cell-_sWp">Inst. 1 ANCI</td><td class="cell-zVh[">Matriz Riesgos</td><td class="cell-Q{I;">Análisis de impacto centrado en el paciente: ¿Qué ocurre si se pierde la integridad de un resultado de laboratorio o la disponibilidad de las imágenes en pabellón? Evaluación de probabilidad de ocurrencia según historial de fallas y vulnerabilidades actuales.</td><td class="cell-g;qE"><span class="user"><img src="IMG_20200529_102129_601.jpg" class="icon user-icon"/>Guido Corral</span></td><td class="cell-xA{["><time>@6 de febrero de 2026 11:12</time></td><td class="cell-pwjE"><span class="user"><img src="IMG_20200529_102129_601.jpg" class="icon user-icon"/>Guido Corral</span></td><td class="cell-j?h~"><time>@9 de febrero de 2026 9:44</time></td><td class="cell-^MFR"><span class="user"><img src="IMG_20200529_102129_601.jpg" class="icon user-icon"/>Guido Corral</span></td><td class="cell-[vOn">35</td></tr><tr id="2ffdabdc-66ac-80b7-a4eb-dcccffa66cdc"><td class="cell-F\bL"><a href="https://www.notion.so/PROYECTO-CIBERSEGURIDAD-2fcdabdc66ac80cf9a4beaaa7f2ed421?pvs=21"><img class="icon notion-static-icon" src="https://www.notion.so/icons/lock-keyhole_blue.svg"/>PROYECTO CIBERSEGURIDAD</a></td><td class="cell-;h]e"><a href="https://www.notion.so/GESTON-DE-RIESGOS-2ffdabdc66ac800daa5cf5280d3e12cb?pvs=21">🟦🟦🟦 GESTON DE RIESGOS</a></td><td class="cell-RF=o">F2.8</td><td class="cell-title"><a href="https://www.notion.so/Auditor-a-de-Terceros-HIS-RIS-PACS-2ffdabdc66ac80b7a4ebdcccffa66cdc?pvs=21">Auditoría de Terceros (HIS/RIS/PACS)</a></td><td class="cell-uvVX"><time>@23/03/2026</time></td><td class="cell-ejSF"><time>@31/03/2026</time></td><td class="cell-rVR@"><a href="https://www.notion.so/CISO-2fcdabdc66ac80b3af4ed01de825c222?pvs=21">CISO</a>, <a href="https://www.notion.so/Jefe-de-TI-2fcdabdc66ac800d873ac8395eca8a94?pvs=21">Jefe de TI</a></td><td class="cell-kKic"><div class="checkbox checkbox-off"></div></td><td class="cell-_sWp">Inst. 3 ANCI</td><td class="cell-zVh[">IF0.2 / LC02</td><td class="cell-Q{I;">Revisión de contratos y accesos de proveedores. Se evalúa si utilizan VPN propias, si tienen MFA y si su SLA de respuesta ante incidentes de ciberseguridad se alinea con las 3 horas exigidas por la ANCI. Uso de LC02 para brechas contractuales.</td><td class="cell-g;qE"><span class="user"><img src="IMG_20200529_102129_601.jpg" class="icon user-icon"/>Guido Corral</span></td><td class="cell-xA{["><time>@6 de febrero de 2026 11:12</time></td><td class="cell-pwjE"><span class="user"><img src="IMG_20200529_102129_601.jpg" class="icon user-icon"/>Guido Corral</span></td><td class="cell-j?h~"><time>@9 de febrero de 2026 9:45</time></td><td class="cell-^MFR"><span class="user"><img src="IMG_20200529_102129_601.jpg" class="icon user-icon"/>Guido Corral</span></td><td class="cell-[vOn">36</td></tr><tr id="2ffdabdc-66ac-80be-852e-fe454d2d55fb"><td class="cell-F\bL"><a href="https://www.notion.so/PROYECTO-CIBERSEGURIDAD-2fcdabdc66ac80cf9a4beaaa7f2ed421?pvs=21"><img class="icon notion-static-icon" src="https://www.notion.so/icons/lock-keyhole_blue.svg"/>PROYECTO CIBERSEGURIDAD</a></td><td class="cell-;h]e"><a href="https://www.notion.so/GOBERNANZA-Y-CUMPLIMIENTO-2fcdabdc66ac800f84c2f62fc3bbfecf?pvs=21">🟦🟦🟦 GOBERNANZA Y CUMPLIMIENTO</a></td><td class="cell-RF=o">F1.2</td><td class="cell-title"><a href="https://www.notion.so/Revisi-n-y-Firma-Pol-tica-de-Seguridad-2ffdabdc66ac80be852efe454d2d55fb?pvs=21">Revisión y Firma Política de Seguridad</a></td><td class="cell-uvVX"><time>@23/03/2026</time></td><td class="cell-ejSF"><time>@31/03/2026</time></td><td class="cell-rVR@"><a href="https://www.notion.so/CISO-2fcdabdc66ac80b3af4ed01de825c222?pvs=21">CISO</a>, <a href="https://www.notion.so/Direcci-n-Hospital-2fcdabdc66ac80679e9ed7410f44c545?pvs=21">Dirección Hospital</a>, <a href="https://www.notion.so/Jefe-de-TI-2fcdabdc66ac800d873ac8395eca8a94?pvs=21">Jefe de TI</a></td><td class="cell-kKic"><div class="checkbox checkbox-on"></div></td><td class="cell-_sWp">ISO 27001</td><td class="cell-zVh[">Política Firmada</td><td class="cell-Q{I;">Redacción de la Política General alineada a la Ley 21.663. Incluye normas de telemedicina, uso de dispositivos personales (BYOD) en el hospital y responsabilidades del personal clínico en la protección de claves.</td><td class="cell-g;qE"><span class="user"><img src="IMG_20200529_102129_601.jpg" class="icon user-icon"/>Guido Corral</span></td><td class="cell-xA{["><time>@6 de febrero de 2026 11:12</time></td><td class="cell-pwjE"><span class="user"><img src="IMG_20200529_102129_601.jpg" class="icon user-icon"/>Guido Corral</span></td><td class="cell-j?h~"><time>@9 de febrero de 2026 9:45</time></td><td class="cell-^MFR"><span class="user"><img src="IMG_20200529_102129_601.jpg" class="icon user-icon"/>Guido Corral</span></td><td class="cell-[vOn">37</td></tr><tr id="2ffdabdc-66ac-8072-8b67-cea4e51e648a"><td class="cell-F\bL"><a href="https://www.notion.so/PROYECTO-CIBERSEGURIDAD-2fcdabdc66ac80cf9a4beaaa7f2ed421?pvs=21"><img class="icon notion-static-icon" src="https://www.notion.so/icons/lock-keyhole_blue.svg"/>PROYECTO CIBERSEGURIDAD</a></td><td class="cell-;h]e"><a href="https://www.notion.so/PROTECCION-2fcdabdc66ac80e58772d77fb7f21dff?pvs=21">🟦🟦🟦 PROTECCION</a></td><td class="cell-RF=o">F3.7</td><td class="cell-title"><a href="https://www.notion.so/Despliegue-General-de-MFA-2ffdabdc66ac80728b67cea4e51e648a?pvs=21">Despliegue General de MFA</a></td><td class="cell-uvVX"><time>@04/01/2026</time></td><td class="cell-ejSF"><time>@04/05/2026</time></td><td class="cell-rVR@"><a href="https://www.notion.so/Jefe-de-TI-2fcdabdc66ac800d873ac8395eca8a94?pvs=21">Jefe de TI</a></td><td class="cell-kKic"><div class="checkbox checkbox-off"></div></td><td class="cell-_sWp">Inst. 3 ANCI</td><td class="cell-zVh[">Log de Config.</td><td class="cell-Q{I;">Implementación obligatoria de Segundo Factor de Autenticación (MFA) para administradores de bases de datos, redes y usuarios con acceso remoto (Telemedicina/Mantenimiento externo). Evita el compromiso de cuentas por phishing.</td><td class="cell-g;qE"><span class="user"><img src="IMG_20200529_102129_601.jpg" class="icon user-icon"/>Guido Corral</span></td><td class="cell-xA{["><time>@6 de febrero de 2026 11:12</time></td><td class="cell-pwjE"><span class="user"><img src="IMG_20200529_102129_601.jpg" class="icon user-icon"/>Guido Corral</span></td><td class="cell-j?h~"><time>@10 de febrero de 2026 9:00</time></td><td class="cell-^MFR"><span class="user"><img src="IMG_20200529_102129_601.jpg" class="icon user-icon"/>Guido Corral</span></td><td class="cell-[vOn">38</td></tr><tr id="2ffdabdc-66ac-805d-83aa-c8066dbffef7"><td class="cell-F\bL"><a href="https://www.notion.so/PROYECTO-CIBERSEGURIDAD-2fcdabdc66ac80cf9a4beaaa7f2ed421?pvs=21"><img class="icon notion-static-icon" src="https://www.notion.so/icons/lock-keyhole_blue.svg"/>PROYECTO CIBERSEGURIDAD</a></td><td class="cell-;h]e"><a href="https://www.notion.so/PROTECCION-2fcdabdc66ac80e58772d77fb7f21dff?pvs=21">🟦🟦🟦 PROTECCION</a></td><td class="cell-RF=o">F3.8</td><td class="cell-title"><a href="https://www.notion.so/Pol-tica-de-Higiene-y-Parches-Cr-ticos-2ffdabdc66ac805d83aac8066dbffef7?pvs=21">Política de Higiene y Parches Críticos</a></td><td class="cell-uvVX"><time>@04/06/2026</time></td><td class="cell-ejSF"><time>@04/12/2026</time></td><td class="cell-rVR@"><a href="https://www.notion.so/Jefe-de-TI-2fcdabdc66ac800d873ac8395eca8a94?pvs=21">Jefe de TI</a></td><td class="cell-kKic"><div class="checkbox checkbox-off"></div></td><td class="cell-_sWp">Inst. 3 ANCI</td><td class="cell-zVh[">IF0.2</td><td class="cell-Q{I;">Establecimiento de un calendario de parches (Instrumento IF0.2) que considere ventanas de mantenimiento nocturnas para no afectar la atención. Priorización de vulnerabilidades explotables según catálogo KEV de CISA.</td><td class="cell-g;qE"><span class="user"><img src="IMG_20200529_102129_601.jpg" class="icon user-icon"/>Guido Corral</span></td><td class="cell-xA{["><time>@6 de febrero de 2026 11:12</time></td><td class="cell-pwjE"><span class="user"><img src="IMG_20200529_102129_601.jpg" class="icon user-icon"/>Guido Corral</span></td><td class="cell-j?h~"><time>@9 de febrero de 2026 9:46</time></td><td class="cell-^MFR"><span class="user"><img src="IMG_20200529_102129_601.jpg" class="icon user-icon"/>Guido Corral</span></td><td class="cell-[vOn">39</td></tr><tr id="2ffdabdc-66ac-80ed-a448-d405c3a6f9d5"><td class="cell-F\bL"><a href="https://www.notion.so/PROYECTO-CIBERSEGURIDAD-2fcdabdc66ac80cf9a4beaaa7f2ed421?pvs=21"><img class="icon notion-static-icon" src="https://www.notion.so/icons/lock-keyhole_blue.svg"/>PROYECTO CIBERSEGURIDAD</a></td><td class="cell-;h]e"><a href="https://www.notion.so/GOBERNANZA-Y-CUMPLIMIENTO-2fcdabdc66ac800f84c2f62fc3bbfecf?pvs=21">🟦🟦🟦 GOBERNANZA Y CUMPLIMIENTO</a></td><td class="cell-RF=o">F1.12</td><td class="cell-title"><a href="https://www.notion.so/Vetting-de-Compras-Tecnol-gicas-2ffdabdc66ac80eda448d405c3a6f9d5?pvs=21">Vetting de Compras Tecnológicas</a></td><td class="cell-uvVX"><time>@09/03/2026</time></td><td class="cell-ejSF"><time>@31/12/2026</time></td><td class="cell-rVR@"><a href="https://www.notion.so/Jefe-Abastecimiento-2fcdabdc66ac80e9bdd7fd928a2e4a01?pvs=21">Jefe Abastecimiento</a>, <a href="https://www.notion.so/Jefe-Equipos-M-dicos-2fcdabdc66ac804db925c3db6b9bed1f?pvs=21">Jefe Equipos Médicos</a>, <a href="https://www.notion.so/Jefe-de-TI-2fcdabdc66ac800d873ac8395eca8a94?pvs=21">Jefe de TI</a></td><td class="cell-kKic"><div class="checkbox checkbox-off"></div></td><td class="cell-_sWp">Inst. 3 ANCI</td><td class="cell-zVh[">VT01</td><td class="cell-Q{I;">Aplicación del instrumento VT01 en cada compra de equipamiento médico o software. El proveedor debe declarar si el equipo permite cifrado, parches de seguridad y si tiene contraseñas por defecto no modificables.</td><td class="cell-g;qE"><span class="user"><img src="IMG_20200529_102129_601.jpg" class="icon user-icon"/>Guido Corral</span></td><td class="cell-xA{["><time>@6 de febrero de 2026 11:12</time></td><td class="cell-pwjE"><span class="user"><img src="IMG_20200529_102129_601.jpg" class="icon user-icon"/>Guido Corral</span></td><td class="cell-j?h~"><time>@9 de febrero de 2026 9:47</time></td><td class="cell-^MFR"><span class="user"><img src="IMG_20200529_102129_601.jpg" class="icon user-icon"/>Guido Corral</span></td><td class="cell-[vOn">40</td></tr><tr id="2ffdabdc-66ac-801b-944d-f820a3e0db93"><td class="cell-F\bL"><a href="https://www.notion.so/PROYECTO-CIBERSEGURIDAD-2fcdabdc66ac80cf9a4beaaa7f2ed421?pvs=21"><img class="icon notion-static-icon" src="https://www.notion.so/icons/lock-keyhole_blue.svg"/>PROYECTO CIBERSEGURIDAD</a></td><td class="cell-;h]e"><a href="https://www.notion.so/RESILIENCIA-2fcdabdc66ac80f4b63dcf73b7dd1175?pvs=21">🟩🟩🟩 RESILIENCIA</a></td><td class="cell-RF=o">F5.1</td><td class="cell-title"><a href="https://www.notion.so/Validaci-n-de-Respaldo-Inmutable-2ffdabdc66ac801b944df820a3e0db93?pvs=21">Validación de Respaldo Inmutable</a></td><td class="cell-uvVX"><time>@13/04/2026</time></td><td class="cell-ejSF"><time>@19/04/2026</time></td><td class="cell-rVR@"><a href="https://www.notion.so/CISO-2fcdabdc66ac80b3af4ed01de825c222?pvs=21">CISO</a>, <a href="https://www.notion.so/Jefe-de-TI-2fcdabdc66ac800d873ac8395eca8a94?pvs=21">Jefe de TI</a></td><td class="cell-kKic"><div class="checkbox checkbox-off"></div></td><td class="cell-_sWp">Inst. 4 ANCI</td><td class="cell-zVh[">Acta Pruebas</td><td class="cell-Q{I;">Ejecución de una prueba de &quot;Restauración desde Cero&quot; (Bare Metal) de la base de datos del RCE y el PACS utilizando copias inmutables (WORM). El objetivo es verificar que los datos no han sido alterados por ransomware y el RTO es &lt; 4 horas.</td><td class="cell-g;qE"><span class="user"><img src="IMG_20200529_102129_601.jpg" class="icon user-icon"/>Guido Corral</span></td><td class="cell-xA{["><time>@6 de febrero de 2026 11:12</time></td><td class="cell-pwjE"><span class="user"><img src="IMG_20200529_102129_601.jpg" class="icon user-icon"/>Guido Corral</span></td><td class="cell-j?h~"><time>@9 de febrero de 2026 9:47</time></td><td class="cell-^MFR"><span class="user"><img src="IMG_20200529_102129_601.jpg" class="icon user-icon"/>Guido Corral</span></td><td class="cell-[vOn">41</td></tr><tr id="2ffdabdc-66ac-80ca-a0f9-f65bfd4cc808"><td class="cell-F\bL"><a href="https://www.notion.so/PROYECTO-CIBERSEGURIDAD-2fcdabdc66ac80cf9a4beaaa7f2ed421?pvs=21"><img class="icon notion-static-icon" src="https://www.notion.so/icons/lock-keyhole_blue.svg"/>PROYECTO CIBERSEGURIDAD</a></td><td class="cell-;h]e"><a href="https://www.notion.so/RESILIENCIA-2fcdabdc66ac80f4b63dcf73b7dd1175?pvs=21">🟩🟩🟩 RESILIENCIA</a></td><td class="cell-RF=o">F5.2</td><td class="cell-title"><a href="https://www.notion.so/Simulacro-de-Continuidad-Modo-Papel-2ffdabdc66ac80caa0f9f65bfd4cc808?pvs=21">Simulacro de Continuidad &quot;Modo Papel&quot;</a></td><td class="cell-uvVX"><time>@20/04/2026</time></td><td class="cell-ejSF"><time>@30/04/2026</time></td><td class="cell-rVR@"><a href="https://www.notion.so/CISO-2fcdabdc66ac80b3af4ed01de825c222?pvs=21">CISO</a>, <a href="https://www.notion.so/Jefe-de-TI-2fcdabdc66ac800d873ac8395eca8a94?pvs=21">Jefe de TI</a></td><td class="cell-kKic"><div class="checkbox checkbox-off"></div></td><td class="cell-_sWp">Inst. 4 ANCI</td><td class="cell-zVh[">Informe Simulacro</td><td class="cell-Q{I;">Simulación física en un servicio crítico de caída total del HIS/RCE. Verificación de existencia de formularios papel, protocolos de identificación manual de pacientes y flujos de comunicación por radio o mensajería física.</td><td class="cell-g;qE"><span class="user"><img src="IMG_20200529_102129_601.jpg" class="icon user-icon"/>Guido Corral</span></td><td class="cell-xA{["><time>@6 de febrero de 2026 11:12</time></td><td class="cell-pwjE"><span class="user"><img src="IMG_20200529_102129_601.jpg" class="icon user-icon"/>Guido Corral</span></td><td class="cell-j?h~"><time>@9 de febrero de 2026 9:48</time></td><td class="cell-^MFR"><span class="user"><img src="IMG_20200529_102129_601.jpg" class="icon user-icon"/>Guido Corral</span></td><td class="cell-[vOn">42</td></tr><tr id="2ffdabdc-66ac-80e0-b16f-d5fb34d861e4"><td class="cell-F\bL"><a href="https://www.notion.so/PROYECTO-CIBERSEGURIDAD-2fcdabdc66ac80cf9a4beaaa7f2ed421?pvs=21"><img class="icon notion-static-icon" src="https://www.notion.so/icons/lock-keyhole_blue.svg"/>PROYECTO CIBERSEGURIDAD</a></td><td class="cell-;h]e"><a href="https://www.notion.so/GOBERNANZA-Y-CUMPLIMIENTO-2fcdabdc66ac800f84c2f62fc3bbfecf?pvs=21">🟦🟦🟦 GOBERNANZA Y CUMPLIMIENTO</a></td><td class="cell-RF=o">F1.1</td><td class="cell-title"><a href="https://www.notion.so/Comit-de-Seguridad-Trimestral-Q1-2ffdabdc66ac80e0b16fd5fb34d861e4?pvs=21">Comité de Seguridad Trimestral Q1</a></td><td class="cell-uvVX"><time>@20/04/2026</time></td><td class="cell-ejSF"><time>@30/04/2026</time></td><td class="cell-rVR@"><a href="https://www.notion.so/Direcci-n-Hospital-2fcdabdc66ac80679e9ed7410f44c545?pvs=21">Dirección Hospital</a>, <a href="https://www.notion.so/CISO-2fcdabdc66ac80b3af4ed01de825c222?pvs=21">CISO</a></td><td class="cell-kKic"><div class="checkbox checkbox-off"></div></td><td class="cell-_sWp">ITS-NC-007</td><td class="cell-zVh[">Acta Comité</td><td class="cell-Q{I;">Instancia de alta dirección para revisar métricas de cumplimiento del plan, estado de los riesgos críticos y aprobación de inversiones extraordinarias para mitigar hallazgos de las auditorías de marzo.</td><td class="cell-g;qE"><span class="user"><img src="IMG_20200529_102129_601.jpg" class="icon user-icon"/>Guido Corral</span></td><td class="cell-xA{["><time>@6 de febrero de 2026 11:12</time></td><td class="cell-pwjE"><span class="user"><img src="IMG_20200529_102129_601.jpg" class="icon user-icon"/>Guido Corral</span></td><td class="cell-j?h~"><time>@9 de febrero de 2026 9:48</time></td><td class="cell-^MFR"><span class="user"><img src="IMG_20200529_102129_601.jpg" class="icon user-icon"/>Guido Corral</span></td><td class="cell-[vOn">43</td></tr><tr id="2ffdabdc-66ac-80df-9567-efe226e7b965"><td class="cell-F\bL"><a href="https://www.notion.so/PROYECTO-CIBERSEGURIDAD-2fcdabdc66ac80cf9a4beaaa7f2ed421?pvs=21"><img class="icon notion-static-icon" src="https://www.notion.so/icons/lock-keyhole_blue.svg"/>PROYECTO CIBERSEGURIDAD</a></td><td class="cell-;h]e"><a href="https://www.notion.so/GESTION-DE-ACTIVOS-2ffdabdc66ac80debc31ed6cdbe48223?pvs=21">🟦🟦🟦 GESTION DE ACTIVOS</a></td><td class="cell-RF=o">F2.6</td><td class="cell-title"><a href="https://www.notion.so/Clasificaci-n-de-Datos-Sensibles-Cl-nicos-2ffdabdc66ac80df9567efe226e7b965?pvs=21">Clasificación de Datos Sensibles/Clínicos</a></td><td class="cell-uvVX"><time>@05/04/2026</time></td><td class="cell-ejSF"><time>@17/05/2026</time></td><td class="cell-rVR@"><a href="https://www.notion.so/Subdirector-Medico-2ffdabdc66ac80dea6f4f7cd4aee3df1?pvs=21">Subdirector Medico</a>, <a href="https://www.notion.so/Subdirectora-de-Cuidados-2ffdabdc66ac80fda16fe763eb199ac2?pvs=21">Subdirectora de Cuidados</a>, <a href="https://www.notion.so/Jefe-de-Calidad-2ffdabdc66ac803a8c88c0aced17c25d?pvs=21">Jefe de Calidad</a></td><td class="cell-kKic"><div class="checkbox checkbox-off"></div></td><td class="cell-_sWp">Ley Prot. Datos</td><td class="cell-zVh[">Inventario Datos</td><td class="cell-Q{I;">Inventariado de flujos de datos: ¿Quién accede a los datos genómicos? ¿Dónde se guardan las biopsias digitales? Clasificación según Ley 19.628 y futura ley de protección de datos para aplicar controles de acceso proporcionales.</td><td class="cell-g;qE"><span class="user"><img src="IMG_20200529_102129_601.jpg" class="icon user-icon"/>Guido Corral</span></td><td class="cell-xA{["><time>@6 de febrero de 2026 11:12</time></td><td class="cell-pwjE"><span class="user"><img src="IMG_20200529_102129_601.jpg" class="icon user-icon"/>Guido Corral</span></td><td class="cell-j?h~"><time>@9 de febrero de 2026 9:48</time></td><td class="cell-^MFR"><span class="user"><img src="IMG_20200529_102129_601.jpg" class="icon user-icon"/>Guido Corral</span></td><td class="cell-[vOn">44</td></tr><tr id="2ffdabdc-66ac-807f-b1f9-d5577fe1cb40"><td class="cell-F\bL"><a href="https://www.notion.so/PROYECTO-CIBERSEGURIDAD-2fcdabdc66ac80cf9a4beaaa7f2ed421?pvs=21"><img class="icon notion-static-icon" src="https://www.notion.so/icons/lock-keyhole_blue.svg"/>PROYECTO CIBERSEGURIDAD</a></td><td class="cell-;h]e"><a href="https://www.notion.so/PROTECCION-2fcdabdc66ac80e58772d77fb7f21dff?pvs=21">🟦🟦🟦 PROTECCION</a></td><td class="cell-RF=o">F3.9</td><td class="cell-title"><a href="https://www.notion.so/Hardening-de-Servidores-Cr-ticos-2ffdabdc66ac807fb1f9d5577fe1cb40?pvs=21">Hardening de Servidores Críticos</a></td><td class="cell-uvVX"><time>@18/05/2026</time></td><td class="cell-ejSF"><time>@31/05/2026</time></td><td class="cell-rVR@"><a href="https://www.notion.so/Jefe-de-TI-2fcdabdc66ac800d873ac8395eca8a94?pvs=21">Jefe de TI</a></td><td class="cell-kKic"><div class="checkbox checkbox-off"></div></td><td class="cell-_sWp">Estándar Salud</td><td class="cell-zVh[">Checklist Hardening</td><td class="cell-Q{I;">Aplicación de configuraciones de seguridad robustas (CIS Benchmarks) en servidores que alojan el RCE y PACS. Incluye deshabilitar protocolos antiguos (SMBv1, TLS 1.0) y cerrar puertos no esenciales para servicios médicos.</td><td class="cell-g;qE"><span class="user"><img src="IMG_20200529_102129_601.jpg" class="icon user-icon"/>Guido Corral</span></td><td class="cell-xA{["><time>@6 de febrero de 2026 11:12</time></td><td class="cell-pwjE"><span class="user"><img src="IMG_20200529_102129_601.jpg" class="icon user-icon"/>Guido Corral</span></td><td class="cell-j?h~"><time>@9 de febrero de 2026 9:49</time></td><td class="cell-^MFR"><span class="user"><img src="IMG_20200529_102129_601.jpg" class="icon user-icon"/>Guido Corral</span></td><td class="cell-[vOn">45</td></tr><tr id="2ffdabdc-66ac-80ca-8c19-ecfcbfc07279"><td class="cell-F\bL"><a href="https://www.notion.so/PROYECTO-CIBERSEGURIDAD-2fcdabdc66ac80cf9a4beaaa7f2ed421?pvs=21"><img class="icon notion-static-icon" src="https://www.notion.so/icons/lock-keyhole_blue.svg"/>PROYECTO CIBERSEGURIDAD</a></td><td class="cell-;h]e"><a href="https://www.notion.so/INFRAESTRUCTURA-2ffdabdc66ac80f2be3af05c4ab1c0a0?pvs=21">🟦🟦🟦 INFRAESTRUCTURA</a></td><td class="cell-RF=o">F4.1</td><td class="cell-title"><a href="https://www.notion.so/Micro-segmentaci-n-Red-Biom-dica-2ffdabdc66ac80ca8c19ecfcbfc07279?pvs=21">Micro-segmentación Red Biomédica</a></td><td class="cell-uvVX"><time>@06/01/2026</time></td><td class="cell-ejSF"><time>@30/06/2026</time></td><td class="cell-rVR@"><a href="https://www.notion.so/Jefe-de-TI-2fcdabdc66ac800d873ac8395eca8a94?pvs=21">Jefe de TI</a></td><td class="cell-kKic"><div class="checkbox checkbox-off"></div></td><td class="cell-_sWp">Red de Datos</td><td class="cell-zVh[">Planos de Red</td><td class="cell-Q{I;">Creación de zonas de red aisladas para equipos médicos que no pueden ser actualizados (ej. TACs con Windows antiguo). Se permite solo el tráfico DICOM hacia el PACS, bloqueando cualquier otro movimiento lateral de posibles virus.</td><td class="cell-g;qE"><span class="user"><img src="IMG_20200529_102129_601.jpg" class="icon user-icon"/>Guido Corral</span></td><td class="cell-xA{["><time>@6 de febrero de 2026 11:12</time></td><td class="cell-pwjE"><span class="user"><img src="IMG_20200529_102129_601.jpg" class="icon user-icon"/>Guido Corral</span></td><td class="cell-j?h~"><time>@9 de febrero de 2026 9:49</time></td><td class="cell-^MFR"><span class="user"><img src="IMG_20200529_102129_601.jpg" class="icon user-icon"/>Guido Corral</span></td><td class="cell-[vOn">46</td></tr><tr id="2ffdabdc-66ac-8034-9410-dfa2e420dfb1"><td class="cell-F\bL"><a href="https://www.notion.so/PROYECTO-CIBERSEGURIDAD-2fcdabdc66ac80cf9a4beaaa7f2ed421?pvs=21"><img class="icon notion-static-icon" src="https://www.notion.so/icons/lock-keyhole_blue.svg"/>PROYECTO CIBERSEGURIDAD</a></td><td class="cell-;h]e"><a href="https://www.notion.so/INFRAESTRUCTURA-2ffdabdc66ac80f2be3af05c4ab1c0a0?pvs=21">🟦🟦🟦 INFRAESTRUCTURA</a></td><td class="cell-RF=o">F4.5</td><td class="cell-title"><a href="https://www.notion.so/Cifrado-de-Datos-en-Reposo-PACS-RCE-2ffdabdc66ac80349410dfa2e420dfb1?pvs=21">Cifrado de Datos en Reposo (PACS/RCE)</a></td><td class="cell-uvVX"><time>@07/01/2026</time></td><td class="cell-ejSF"><time>@15/07/2026</time></td><td class="cell-rVR@"><a href="https://www.notion.so/Jefe-de-TI-2fcdabdc66ac800d873ac8395eca8a94?pvs=21">Jefe de TI</a></td><td class="cell-kKic"><div class="checkbox checkbox-off"></div></td><td class="cell-_sWp">Seg. Paciente</td><td class="cell-zVh[">Cert. Cifrado</td><td class="cell-Q{I;">Implementación de cifrado (AES-256) en las unidades de almacenamiento donde residen las fichas clínicas e imágenes. Protege la información ante el robo físico de discos o acceso no autorizado al sistema de archivos.</td><td class="cell-g;qE"><span class="user"><img src="IMG_20200529_102129_601.jpg" class="icon user-icon"/>Guido Corral</span></td><td class="cell-xA{["><time>@6 de febrero de 2026 11:12</time></td><td class="cell-pwjE"><span class="user"><img src="IMG_20200529_102129_601.jpg" class="icon user-icon"/>Guido Corral</span></td><td class="cell-j?h~"><time>@9 de febrero de 2026 9:49</time></td><td class="cell-^MFR"><span class="user"><img src="IMG_20200529_102129_601.jpg" class="icon user-icon"/>Guido Corral</span></td><td class="cell-[vOn">47</td></tr><tr id="2ffdabdc-66ac-8012-a091-f184ccc74955"><td class="cell-F\bL"><a href="https://www.notion.so/PROYECTO-CIBERSEGURIDAD-2fcdabdc66ac80cf9a4beaaa7f2ed421?pvs=21"><img class="icon notion-static-icon" src="https://www.notion.so/icons/lock-keyhole_blue.svg"/>PROYECTO CIBERSEGURIDAD</a></td><td class="cell-;h]e"><a href="https://www.notion.so/PROTECCION-2fcdabdc66ac80e58772d77fb7f21dff?pvs=21">🟦🟦🟦 PROTECCION</a></td><td class="cell-RF=o">F3.6</td><td class="cell-title"><a href="https://www.notion.so/Hacking-tico-Anual-Pentesting-2ffdabdc66ac8012a091f184ccc74955?pvs=21">Hacking Ético Anual (Pentesting)</a></td><td class="cell-uvVX"><time>@08/01/2026</time></td><td class="cell-ejSF"><time>@31/08/2026</time></td><td class="cell-rVR@"><a href="https://www.notion.so/Jefe-de-TI-2fcdabdc66ac800d873ac8395eca8a94?pvs=21">Jefe de TI</a>, <a href="https://www.notion.so/CISO-2fcdabdc66ac80b3af4ed01de825c222?pvs=21">CISO</a></td><td class="cell-kKic"><div class="checkbox checkbox-off"></div></td><td class="cell-_sWp">Res. 850</td><td class="cell-zVh[">LC02 (Servicio)</td><td class="cell-Q{I;">Ejecución de pruebas de penetración controladas simulando un atacante externo e interno. Foco en la interfaz web del RCE y portales de resultados para pacientes, buscando vulnerabilidades de inyección o robo de sesiones.</td><td class="cell-g;qE"><span class="user"><img src="IMG_20200529_102129_601.jpg" class="icon user-icon"/>Guido Corral</span></td><td class="cell-xA{["><time>@6 de febrero de 2026 11:12</time></td><td class="cell-pwjE"><span class="user"><img src="IMG_20200529_102129_601.jpg" class="icon user-icon"/>Guido Corral</span></td><td class="cell-j?h~"><time>@9 de febrero de 2026 9:50</time></td><td class="cell-^MFR"><span class="user"><img src="IMG_20200529_102129_601.jpg" class="icon user-icon"/>Guido Corral</span></td><td class="cell-[vOn">48</td></tr><tr id="303dabdc-66ac-8052-803f-ea324c5c4428"><td class="cell-F\bL"><a href="https://www.notion.so/PROYECTO-CIBERSEGURIDAD-2fcdabdc66ac80cf9a4beaaa7f2ed421?pvs=21"><img class="icon notion-static-icon" src="https://www.notion.so/icons/lock-keyhole_blue.svg"/>PROYECTO CIBERSEGURIDAD</a></td><td class="cell-;h]e"><a href="https://www.notion.so/PROTECCION-2fcdabdc66ac80e58772d77fb7f21dff?pvs=21">🟦🟦🟦 PROTECCION</a></td><td class="cell-RF=o"></td><td class="cell-title"><a href="https://www.notion.so/303dabdc66ac8052803fea324c5c4428?pvs=21">Sin título</a></td><td class="cell-uvVX"></td><td class="cell-ejSF"></td><td class="cell-rVR@"></td><td class="cell-kKic"><div class="checkbox checkbox-off"></div></td><td class="cell-_sWp"></td><td class="cell-zVh["></td><td class="cell-Q{I;"></td><td class="cell-g;qE"></td><td class="cell-xA{["><time>@10 de febrero de 2026 9:25</time></td><td class="cell-pwjE"><span class="user"><img src="IMG_20200529_102129_601.jpg" class="icon user-icon"/>Guido Corral</span></td><td class="cell-j?h~"><time>@10 de febrero de 2026 9:25</time></td><td class="cell-^MFR"><span class="user"><img src="IMG_20200529_102129_601.jpg" class="icon user-icon"/>Guido Corral</span></td><td class="cell-[vOn">71</td></tr><tr id="2ffdabdc-66ac-81be-8e44-e35b38d3eb49"><td class="cell-F\bL"><a href="https://www.notion.so/PROYECTO-CIBERSEGURIDAD-2fcdabdc66ac80cf9a4beaaa7f2ed421?pvs=21"><img class="icon notion-static-icon" src="https://www.notion.so/icons/lock-keyhole_blue.svg"/>PROYECTO CIBERSEGURIDAD</a></td><td class="cell-;h]e"><a href="https://www.notion.so/ANCI-PRIORITARAS-2ffdabdc66ac80819198d982c0ea8d66?pvs=21">🟦🟦🟦 ANCI PRIORITARAS</a></td><td class="cell-RF=o">F2.8.b</td><td class="cell-title"><a href="https://www.notion.so/Evaluaci-n-de-Riesgos-de-Disponibilidad-2ffdabdc66ac81be8e44e35b38d3eb49?pvs=21">Evaluación de Riesgos de Disponibilidad</a></td><td class="cell-uvVX"><time>@23/03/2026</time></td><td class="cell-ejSF"><time>@31/03/2026</time></td><td class="cell-rVR@"></td><td class="cell-kKic"><div class="checkbox checkbox-off"></div></td><td class="cell-_sWp">ANCI Inst. 1</td><td class="cell-zVh[">Matriz Riesgos</td><td class="cell-Q{I;">Realizar el mapeo de procesos clínicos que dependen de los activos nivel 5 del IC01 para identificar los puntos de falla única que no están cubiertos por el actual plan de cambios.</td><td class="cell-g;qE"><span class="user"><img src="IMG_20200529_102129_601.jpg" class="icon user-icon"/>Guido Corral</span></td><td class="cell-xA{["><time>@6 de febrero de 2026 13:25</time></td><td class="cell-pwjE"><span class="user"><img src="IMG_20200529_102129_601.jpg" class="icon user-icon"/>Guido Corral</span></td><td class="cell-j?h~"><time>@9 de febrero de 2026 9:54</time></td><td class="cell-^MFR"><span class="user"><img src="IMG_20200529_102129_601.jpg" class="icon user-icon"/>Guido Corral</span></td><td class="cell-[vOn">62</td></tr><tr id="2ffdabdc-66ac-81f3-99f7-ee8ef697db01"><td class="cell-F\bL"><a href="https://www.notion.so/PROYECTO-CIBERSEGURIDAD-2fcdabdc66ac80cf9a4beaaa7f2ed421?pvs=21"><img class="icon notion-static-icon" src="https://www.notion.so/icons/lock-keyhole_blue.svg"/>PROYECTO CIBERSEGURIDAD</a></td><td class="cell-;h]e"><a href="https://www.notion.so/ANCI-PRIORITARAS-2ffdabdc66ac80819198d982c0ea8d66?pvs=21">🟦🟦🟦 ANCI PRIORITARAS</a></td><td class="cell-RF=o">F5.2.b</td><td class="cell-title"><a href="https://www.notion.so/Validaci-n-de-Resiliencia-y-Backup-2ffdabdc66ac81f399f7ee8ef697db01?pvs=21">Validación de Resiliencia y Backup</a></td><td class="cell-uvVX"><time>@25/04/2026</time></td><td class="cell-ejSF"><time>@30/04/2026</time></td><td class="cell-rVR@"></td><td class="cell-kKic"><div class="checkbox checkbox-off"></div></td><td class="cell-_sWp">ANCI Inst. 4</td><td class="cell-zVh[">Acta Pruebas</td><td class="cell-Q{I;">Ejecución de prueba de restauración completa (Bare Metal) del RCE desde el respaldo inmutable para validar tiempos de recuperación (RTO) bajo condiciones de crisis.</td><td class="cell-g;qE"><span class="user"><img src="IMG_20200529_102129_601.jpg" class="icon user-icon"/>Guido Corral</span></td><td class="cell-xA{["><time>@6 de febrero de 2026 13:25</time></td><td class="cell-pwjE"><span class="user"><img src="IMG_20200529_102129_601.jpg" class="icon user-icon"/>Guido Corral</span></td><td class="cell-j?h~"><time>@9 de febrero de 2026 9:54</time></td><td class="cell-^MFR"><span class="user"><img src="IMG_20200529_102129_601.jpg" class="icon user-icon"/>Guido Corral</span></td><td class="cell-[vOn">61</td></tr><tr id="2ffdabdc-66ac-8115-bafd-ee774bae4ffc"><td class="cell-F\bL"><a href="https://www.notion.so/PROYECTO-CIBERSEGURIDAD-2fcdabdc66ac80cf9a4beaaa7f2ed421?pvs=21"><img class="icon notion-static-icon" src="https://www.notion.so/icons/lock-keyhole_blue.svg"/>PROYECTO CIBERSEGURIDAD</a></td><td class="cell-;h]e"><a href="https://www.notion.so/ANCI-PRIORITARAS-2ffdabdc66ac80819198d982c0ea8d66?pvs=21">🟦🟦🟦 ANCI PRIORITARAS</a></td><td class="cell-RF=o">F5.2a</td><td class="cell-title"><a href="https://www.notion.so/Protocolo-Institucional-de-Modo-Papel-2ffdabdc66ac8115bafdee774bae4ffc?pvs=21">Protocolo Institucional de Modo Papel</a></td><td class="cell-uvVX"><time>@20/04/2026</time></td><td class="cell-ejSF"><time>@30/04/2026</time></td><td class="cell-rVR@"></td><td class="cell-kKic"><div class="checkbox checkbox-off"></div></td><td class="cell-_sWp">ANCI Inst. 4</td><td class="cell-zVh[">Protocolo Clínico</td><td class="cell-Q{I;">Elaboración del instructivo de atención manual para servicios críticos, incluyendo el diseño de kits de emergencia (formularios físicos) y rutas de comunicación física.</td><td class="cell-g;qE"><span class="user"><img src="IMG_20200529_102129_601.jpg" class="icon user-icon"/>Guido Corral</span></td><td class="cell-xA{["><time>@6 de febrero de 2026 13:25</time></td><td class="cell-pwjE"><span class="user"><img src="IMG_20200529_102129_601.jpg" class="icon user-icon"/>Guido Corral</span></td><td class="cell-j?h~"><time>@9 de febrero de 2026 9:53</time></td><td class="cell-^MFR"><span class="user"><img src="IMG_20200529_102129_601.jpg" class="icon user-icon"/>Guido Corral</span></td><td class="cell-[vOn">60</td></tr><tr id="2ffdabdc-66ac-8121-9cba-d5200f6d99fd"><td class="cell-F\bL"><a href="https://www.notion.so/PROYECTO-CIBERSEGURIDAD-2fcdabdc66ac80cf9a4beaaa7f2ed421?pvs=21"><img class="icon notion-static-icon" src="https://www.notion.so/icons/lock-keyhole_blue.svg"/>PROYECTO CIBERSEGURIDAD</a></td><td class="cell-;h]e"><a href="https://www.notion.so/ANCI-PRIORITARAS-2ffdabdc66ac80819198d982c0ea8d66?pvs=21">🟦🟦🟦 ANCI PRIORITARAS</a></td><td class="cell-RF=o">F5.1b</td><td class="cell-title"><a href="https://www.notion.so/Implementaci-n-de-Inmutabilidad-WORM-2ffdabdc66ac81219cbad5200f6d99fd?pvs=21">Implementación de Inmutabilidad (WORM)</a></td><td class="cell-uvVX"><time>@13/04/2026</time></td><td class="cell-ejSF"><time>@19/04/2026</time></td><td class="cell-rVR@"></td><td class="cell-kKic"><div class="checkbox checkbox-off"></div></td><td class="cell-_sWp">ANCI Inst. 4</td><td class="cell-zVh[">Acta Técnica</td><td class="cell-Q{I;">Configurar políticas de bloqueo de retención en el storage de respaldo para los sistemas RCE y PACS, asegurando que los datos sean indestructibles ante Ransomware.</td><td class="cell-g;qE"><span class="user"><img src="IMG_20200529_102129_601.jpg" class="icon user-icon"/>Guido Corral</span></td><td class="cell-xA{["><time>@6 de febrero de 2026 13:25</time></td><td class="cell-pwjE"><span class="user"><img src="IMG_20200529_102129_601.jpg" class="icon user-icon"/>Guido Corral</span></td><td class="cell-j?h~"><time>@10 de febrero de 2026 8:54</time></td><td class="cell-^MFR"><span class="user"><img src="IMG_20200529_102129_601.jpg" class="icon user-icon"/>Guido Corral</span></td><td class="cell-[vOn">59</td></tr><tr id="2ffdabdc-66ac-81ce-9da2-fd09708714b4"><td class="cell-F\bL"><a href="https://www.notion.so/PROYECTO-CIBERSEGURIDAD-2fcdabdc66ac80cf9a4beaaa7f2ed421?pvs=21"><img class="icon notion-static-icon" src="https://www.notion.so/icons/lock-keyhole_blue.svg"/>PROYECTO CIBERSEGURIDAD</a></td><td class="cell-;h]e"><a href="https://www.notion.so/ANCI-PRIORITARAS-2ffdabdc66ac80819198d982c0ea8d66?pvs=21">🟦🟦🟦 ANCI PRIORITARAS</a></td><td class="cell-RF=o">F3.7.b</td><td class="cell-title"><a href="https://www.notion.so/Control-de-Acceso-basado-en-Criticidad-2ffdabdc66ac81ce9da2fd09708714b4?pvs=21">Control de Acceso basado en Criticidad</a></td><td class="cell-uvVX"><time>@04/01/2026</time></td><td class="cell-ejSF"><time>@04/07/2026</time></td><td class="cell-rVR@"></td><td class="cell-kKic"><div class="checkbox checkbox-off"></div></td><td class="cell-_sWp">ANCI Inst. 3</td><td class="cell-zVh[">IC01 / IF0.2</td><td class="cell-Q{I;">Modificar el &quot;Procedimiento de Gestión de Accesos&quot; para que solicitudes a sistemas de &quot;Soporte Vital&quot; (según IC01) activen obligatoriamente MFA y aprobación de Subdirección Médica.</td><td class="cell-g;qE"><span class="user"><img src="IMG_20200529_102129_601.jpg" class="icon user-icon"/>Guido Corral</span></td><td class="cell-xA{["><time>@6 de febrero de 2026 13:25</time></td><td class="cell-pwjE"><span class="user"><img src="IMG_20200529_102129_601.jpg" class="icon user-icon"/>Guido Corral</span></td><td class="cell-j?h~"><time>@9 de febrero de 2026 9:50</time></td><td class="cell-^MFR"><span class="user"><img src="IMG_20200529_102129_601.jpg" class="icon user-icon"/>Guido Corral</span></td><td class="cell-[vOn">67</td></tr><tr id="2ffdabdc-66ac-8162-8575-d2668adc5d01"><td class="cell-F\bL"><a href="https://www.notion.so/PROYECTO-CIBERSEGURIDAD-2fcdabdc66ac80cf9a4beaaa7f2ed421?pvs=21"><img class="icon notion-static-icon" src="https://www.notion.so/icons/lock-keyhole_blue.svg"/>PROYECTO CIBERSEGURIDAD</a></td><td class="cell-;h]e"><a href="https://www.notion.so/ANCI-PRIORITARAS-2ffdabdc66ac80819198d982c0ea8d66?pvs=21">🟦🟦🟦 ANCI PRIORITARAS</a></td><td class="cell-RF=o">F2.1.b</td><td class="cell-title"><a href="https://www.notion.so/Integraci-n-IC01-en-Gesti-n-de-Cambios-2ffdabdc66ac81628575d2668adc5d01?pvs=21">Integración IC01 en Gestión de Cambios</a></td><td class="cell-uvVX"><time>@16/03/2026</time></td><td class="cell-ejSF"><time>@22/03/2026</time></td><td class="cell-rVR@"></td><td class="cell-kKic"><div class="checkbox checkbox-off"></div></td><td class="cell-_sWp">ANCI Inst. 1 y 3</td><td class="cell-zVh[">IC01 / RFC</td><td class="cell-Q{I;">Actualizar el flujo del Formulario RFC (Consolidado Final) para que la consulta al ID de activo del IC01 sea obligatoria, exigiendo aprobación del CISO para criticidad 4 y 5.</td><td class="cell-g;qE"><span class="user"><img src="IMG_20200529_102129_601.jpg" class="icon user-icon"/>Guido Corral</span></td><td class="cell-xA{["><time>@6 de febrero de 2026 13:25</time></td><td class="cell-pwjE"><span class="user"><img src="IMG_20200529_102129_601.jpg" class="icon user-icon"/>Guido Corral</span></td><td class="cell-j?h~"><time>@9 de febrero de 2026 9:50</time></td><td class="cell-^MFR"><span class="user"><img src="IMG_20200529_102129_601.jpg" class="icon user-icon"/>Guido Corral</span></td><td class="cell-[vOn">57</td></tr></tbody></table><br/><br/></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>
